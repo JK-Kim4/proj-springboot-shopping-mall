@@ -13,4 +13,9 @@ public class HomeController {
         return "index";
     }
 
+    @GetMapping(value = {"/contentUs"})
+    public String contectUs(){
+        return "contectUs";
+    }
+
 }
