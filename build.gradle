@@ -24,14 +24,38 @@ bootWar.enabled = false
 war.enabled = true
 
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-    implementation 'org.springframework.boot:spring-boot-starter-mustache'
     implementation 'org.springframework.boot:spring-boot-starter-web'
-    compileOnly 'org.projectlombok:lombok'
+
+    //JPA
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+    //H2 : test db
     runtimeOnly 'com.h2database:h2'
+
+    //mustache
+    implementation 'org.springframework.boot:spring-boot-starter-mustache'
+
+    //jdbc session
+    implementation('org.springframework.session:spring-session-jdbc')
+
+    //maria-db
+    implementation('org.mariadb.jdbc:mariadb-java-client')
+
+    //spring-security
+    implementation('org.springframework.boot:spring-boot-starter-oauth2-client')
+
+    //lombok
+    compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
+
+    //tomcat ( 외장 톰갯으로 구동 가능하도록 설정 )
     providedRuntime('org.springframework.boot:spring-boot-starter-tomcat')
+
+    //spring test
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+    //oauth test
+    testImplementation('org.springframework.security:spring-security-test')
 }
 
 bootWar {
