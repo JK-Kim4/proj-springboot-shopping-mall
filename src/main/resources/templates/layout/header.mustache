@@ -65,8 +65,17 @@
                                 <li><a href="#">menu 04</a></li>
                             </ul>
                         </li>
-                        <!-- <li class=""><a rel="sponsored" href="https://templatemo.com" target="_blank">External URL</a></li> -->
-                        <li class="scroll-to-section"><a href="#reservation">Login</a></li>
+                        {{#username}}
+                            <p>Logged user name : {{userName}}</p>
+                            <li>
+                                <a href="/logout">Logout</a>
+                            </li>
+                        {{/username}}
+                        {{^userName}}
+                            <li class="scroll-to-section">
+                                <a href="/oauth2/authorization/google">Google Login</a>
+                            </li>
+                        {{/userName}}
                     </ul>
                     <a class='menu-trigger'>
                         <span>Menu</span>

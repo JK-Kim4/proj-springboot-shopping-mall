@@ -14,8 +14,8 @@ import javax.persistence.*;
 @Getter
 @NoArgsConstructor
 @Entity
-public class User {
-
+@Table(name="user")
+public class User extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,7 +30,6 @@ public class User {
     @Column
     private String picture;
 
-    /*spring security 권한*/
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private Role role;
@@ -53,4 +52,5 @@ public class User {
     public String getRoleKey(){
         return this.role.getKey();
     }
+
 }
