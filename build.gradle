@@ -1,9 +1,20 @@
-plugins {
-    id 'org.springframework.boot' version '2.5.5'
-    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
-    id 'java'
+buildscript{
+    ext{
+        springBootVersion = '2.1.7.RELEASE'
+    }
+    repositories{
+        mavenCentral()
+        jcenter()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
 }
 
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
 
 group = 'com.boiling'
 version = '0.0.1-SNAPSHOT'
@@ -26,17 +37,18 @@ war.enabled = true
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
 
-    //devtools
-    implementation group: 'org.springframework.boot', name: 'spring-boot-devtools', version: '2.6.0'
+    //lombok
+    implementation 'org.projectlombok:lombok'
 
-    //JPA
-    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-
-    //H2 : test db
-    runtimeOnly 'com.h2database:h2'
+    //jap & database
+    implementation('org.springframework.boot:spring-boot-starter-data-jpa')
+    implementation('com.h2database:h2')
 
     //mustache
-    implementation 'org.springframework.boot:spring-boot-starter-mustache'
+    implementation('org.springframework.boot:spring-boot-starter-mustache')
+
+    //spring-security
+    implementation('org.springframework.boot:spring-boot-starter-oauth2-client')
 
     //jdbc session
     implementation('org.springframework.session:spring-session-jdbc')
@@ -44,21 +56,13 @@ dependencies {
     //maria-db
     implementation('org.mariadb.jdbc:mariadb-java-client')
 
-    //spring-security
-    implementation('org.springframework.boot:spring-boot-starter-oauth2-client')
-
-    //lombok
-    compileOnly 'org.projectlombok:lombok'
-    annotationProcessor 'org.projectlombok:lombok'
-
-    //tomcat ( 외장 톰갯으로 구동 가능하도록 설정 )
-    providedRuntime('org.springframework.boot:spring-boot-starter-tomcat')
-
-    //spring test
+    //test
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
     //oauth test
     testImplementation('org.springframework.security:spring-security-test')
+    //tomcat ( 외장 톰갯으로 구동 가능하도록 설정 )
+    providedRuntime('org.springframework.boot:spring-boot-starter-tomcat')
 }
 
 bootWar {
