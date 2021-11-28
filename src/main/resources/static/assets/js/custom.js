@@ -135,7 +135,7 @@
 	});
 
 	$(document).ready(function () {
-	    $(document).on("scroll", onScroll);
+	    /*$(document).on("scroll", onScroll);*/
 	    
 	    //smoothscroll
 	    $('.scroll-to-section a[href^="#"]').on('click', function (e) {
@@ -154,17 +154,19 @@
 				scrollTop: (target.offset().top) - 79
 			}, 500, 'swing', function () {
 				window.location.hash = target;
-				$(document).on("scroll", onScroll);
+				// $(document).on("scroll", onScroll);
 			});
 	        
 	    });
 	});
 
-	function onScroll(event){
+	/*function onScroll(event){
 	    var scrollPos = $(document).scrollTop();
 	    $('.nav a').each(function () {
 	        var currLink = $(this);
 	        var refElement = $(currLink.attr("href"));
+	        console.log("refElement => " + JSON.stringify(refElement));
+	        console.log("refElement.position => " + refElement.position());
 	        if (refElement.position().top <= scrollPos && refElement.position().top + refElement.height() > scrollPos) {
 	            $('.nav ul li a').removeClass("active");
 	            currLink.addClass("active");
@@ -173,7 +175,7 @@
 	            currLink.removeClass("active");
 	        }
 	    });
-	}
+	}*/
 
 
 	// Page loading animation

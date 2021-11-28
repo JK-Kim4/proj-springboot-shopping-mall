@@ -1,4 +1,4 @@
-package com.boiling.kidduramu.domain.user;
+package com.boiling.kidduramu.domain;
 
 import lombok.Getter;
 import org.springframework.data.annotation.CreatedDate;

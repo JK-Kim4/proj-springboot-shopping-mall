@@ -1,5 +1,6 @@
 package com.boiling.kidduramu.domain.user;
 
+import com.boiling.kidduramu.domain.BaseTimeEntity;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

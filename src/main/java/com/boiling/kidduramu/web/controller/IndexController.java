@@ -17,7 +17,7 @@ public class IndexController {
     public String index(Model model, @LoginUser SessionUser user){
         log.debug("index page");
         if(user != null){
-            model.addAttribute("username", user.getName());
+            model.addAttribute("userName", user.getName());
         }
         return "index";
     }

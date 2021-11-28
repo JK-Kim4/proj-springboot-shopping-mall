@@ -65,12 +65,12 @@
                                 <li><a href="#">menu 04</a></li>
                             </ul>
                         </li>
-                        {{#username}}
+                        {{#userName}}
                             <p>Logged user name : {{userName}}</p>
                             <li>
                                 <a href="/logout">Logout</a>
                             </li>
-                        {{/username}}
+                        {{/userName}}
                         {{^userName}}
                             <li class="scroll-to-section">
                                 <a href="/oauth2/authorization/google">Google Login</a>
