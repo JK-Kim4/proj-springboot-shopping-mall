@@ -1,6 +1,5 @@
 package com.boiling.kidduramu.config;
 
-import com.boiling.kidduramu.domain.user.Role;
 import com.boiling.kidduramu.oauth.service.CustomOAuth2UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -24,8 +23,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .headers().frameOptions().disable()
                 .and()
                 .authorizeRequests()
-                .antMatchers("/", "/assets/**/**", "/h2-console/**").permitAll()
-                .antMatchers("/api/v1/**").hasRole(Role.USER.name())
+                .antMatchers("/", "/assets/**/**", "/h2-console/**", "/products/**", "/api/v1/**").permitAll()
+//                .antMatchers("/api/v1/**").hasRole(Role.USER.name())
                 .anyRequest().authenticated()
                 .and()
                 .logout().logoutSuccessUrl("/")
