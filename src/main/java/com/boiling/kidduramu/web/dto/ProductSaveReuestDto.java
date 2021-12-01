@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 
 @Getter
 @NoArgsConstructor
-public class ProductSaveDto {
+public class ProductSaveReuestDto {
 
     private String name;
     private String desc;
@@ -15,8 +15,8 @@ public class ProductSaveDto {
     private String picture;
 
     @Builder
-    public ProductSaveDto (String name, String desc,
-                           String seller, String picture){
+    public ProductSaveReuestDto(String name, String desc,
+                                String seller, String picture){
         this.name = name;
         this.desc = desc;
         this.seller = seller;

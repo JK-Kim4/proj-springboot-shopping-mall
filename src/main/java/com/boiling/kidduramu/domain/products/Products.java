@@ -67,4 +67,10 @@ public class Products extends BaseTimeEntity {
         this.refundCnt = refundCnt;
         this.showCnt = showCnt;
     }
+
+    //상품 수정
+    public void update(String name, String desc){
+        this.name = name;
+        this.desc = desc;
+    }
 }
