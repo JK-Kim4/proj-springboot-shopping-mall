@@ -5,6 +5,7 @@ var main = {
 
         //save button 클릭 시 save 함수 실행
         $("#btn-save").on("click", function (){
+            console.log("save btn clicked");
            _this.save();
         });
 
@@ -36,3 +37,5 @@ var main = {
         })
     }
 }
+
+main.init();
