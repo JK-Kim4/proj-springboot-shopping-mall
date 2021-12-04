@@ -62,13 +62,13 @@ public class ProductApiControllerTest {
         //given
         String name = "test name";
         String seller = "test seller";
-        String picture = "test picture";
+        long fileId = 1;
         String desc = "test desc";
 
         ProductSaveReuestDto requestDto = ProductSaveReuestDto.builder()
                 .name(name)
                 .desc(desc)
-                .picture(picture)
+                .fileId(fileId)
                 .seller(seller)
                 .build();
 
@@ -97,7 +97,7 @@ public class ProductApiControllerTest {
                 Products.builder()
                         .name("test1")
                         .desc("test1")
-                        .picture("test1")
+                        .fileId(1L)
                         .seller("test1")
                         .build());
 

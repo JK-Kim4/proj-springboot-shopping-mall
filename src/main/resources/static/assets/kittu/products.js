@@ -9,7 +9,20 @@ var main = {
            _this.save();
         });
 
+        //save file upload
+        $("#uploadFile").on("change", function (){
+           console.log("file update");
+           _this.upload();
+        });
 
+
+    },
+    //file upload
+    upload : function (){
+        console.log($("#uploadFile").val());
+        var fileName = $("#uploadFile").val().split("\\").pop();
+        console.log(fileName);
+        $("#picture").val(fileName);
     },
     //save function
     save : function (){

@@ -29,9 +29,9 @@ public class Products extends BaseTimeEntity {
     @Column(nullable = false)
     private String seller;
 
-    //상품사진
+    //업로드 사진 고유번호
     @Column
-    private String picture;
+    private Long fileId;
 
     //재고 수량
     @Column
@@ -55,12 +55,12 @@ public class Products extends BaseTimeEntity {
 
     @Builder
     public Products(String name, String desc,
-                   String seller, String picture,
+                   String seller, Long fileId,
                    int stockCnt, int sellCnt,
                    int refundCnt, int showCnt){
         this.name = name;
         this.desc = desc;
-        this.picture = picture;
+        this.fileId = fileId;
         this.seller = seller;
         this.stockCnt = stockCnt;
         this.sellCnt = sellCnt;
