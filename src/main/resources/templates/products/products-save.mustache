@@ -29,12 +29,12 @@
                                 <label for="seller" class="col-sm-4"> 등 록 자 : </label>
                                 <input class="col-sm-8" type="text" name="seller" id="seller" required="true" value="{{user.name}}" disabled>
                             </div>
-                            <form class="form-inline col-lg-12" enctype="multipart/form-data">
+                            <form class="form-inline col-lg-12" id="uploadFileForm" enctype="multipart/form-data">
                                 <label for="uploadFile" class="col-sm-4"> 업로드 파일 : </label>
                                 <input class="col-sm-8" type="file" id="uploadFile" name="uploadFile">
-                                <button type="button" class="col-sm-8" id="file-up-btn">파일 업로드 하기</button>
+                                <button type="button" id="btn-file-upload" class="main-button-icon">이미지 등록</button>
+                                <input type="hidden" name="fileId" id="fileId">
                             </form>
-                            <input type="hidden" name="fileName">
                             <div class="col-lg-12">
                                 <fieldset>
                                     <textarea name="desc" rows="6" id="desc" placeholder="상품에 대한 설명을 작성해 주세요." required=""></textarea>

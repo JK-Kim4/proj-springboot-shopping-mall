@@ -3,12 +3,16 @@ package com.boiling.kidduramu.web.service;
 
 import com.boiling.kidduramu.domain.products.Products;
 import com.boiling.kidduramu.domain.products.ProductsRepository;
+import com.boiling.kidduramu.web.dto.ProductListResponseDto;
 import com.boiling.kidduramu.web.dto.ProductSaveReuestDto;
 import com.boiling.kidduramu.web.dto.ProductUpdateRequestDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -32,6 +36,13 @@ public class ProductService {
         products.update(productUpdateRequestDto.getName(), productUpdateRequestDto.getDesc());
 
         return id;
+    }
+
+    @Transactional
+    public List<ProductListResponseDto> findAllDesc(){
+        return productsRepository.findAllDesc().stream()
+                .map(ProductListResponseDto::new)
+                .collect(Collectors.toList());
     }
 
 }
