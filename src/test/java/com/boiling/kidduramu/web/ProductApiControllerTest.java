@@ -1,9 +1,9 @@
 package com.boiling.kidduramu.web;
 
-import com.boiling.kidduramu.domain.products.Products;
-import com.boiling.kidduramu.domain.products.ProductsRepository;
-import com.boiling.kidduramu.web.dto.ProductSaveReuestDto;
-import com.boiling.kidduramu.web.dto.ProductUpdateRequestDto;
+import com.boiling.kidduramu.domain.products.domain.Products;
+import com.boiling.kidduramu.domain.products.domain.ProductsRepository;
+import com.boiling.kidduramu.domain.products.domain.ProductSaveReuestDto;
+import com.boiling.kidduramu.domain.products.domain.ProductUpdateRequestDto;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.After;
 import org.junit.Before;
