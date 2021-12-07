@@ -10,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -20,10 +21,18 @@ import java.util.stream.Collectors;
 public class ProductService {
 
     private final ProductsRepository productsRepository;
+    private final S3UploadService s3UploadService;
 
     /*상품 등록*/
     @Transactional
-    public Long save(ProductSaveReuestDto productSaveDto){
+    public Long save(ProductSaveReuestDto productSaveDto, MultipartFile multipartFile){
+        try{
+            if(multipartFile != null){
+                productSaveDto.setFileUrl(s3UploadService.upload(multipartFile));
+            }
+        }catch (Exception e){
+            log.error("product save errpr : {}",e);
+        }
         return productsRepository.save(productSaveDto.toEntity()).getId();
     }
 

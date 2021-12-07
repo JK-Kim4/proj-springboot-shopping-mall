@@ -1,28 +1,26 @@
 package com.boiling.kidduramu.web.dto;
 
 import com.boiling.kidduramu.domain.products.Products;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Getter
 @Setter
+@ToString
 @NoArgsConstructor
 public class ProductSaveReuestDto {
 
     private String name;
     private String desc;
     private String seller;
-    private Long fileId;
+    private String fileUrl;
 
     @Builder
     public ProductSaveReuestDto(String name, String desc,
-                                String seller, Long fileId){
+                                String seller, String fileUrl){
         this.name = name;
         this.desc = desc;
         this.seller = seller;
-        this.fileId = fileId;
+        this.fileUrl = fileUrl;
     }
 
     public Products toEntity(){
@@ -30,7 +28,7 @@ public class ProductSaveReuestDto {
                 name(name).
                 desc(desc).
                 seller(seller).
-                fileId(fileId).
+                fileUrl(fileUrl).
                 build();
     }
 

@@ -2,11 +2,12 @@ package com.boiling.kidduramu.web.controller;
 
 import com.boiling.kidduramu.web.dto.ProductSaveReuestDto;
 import com.boiling.kidduramu.web.dto.ProductUpdateRequestDto;
-import com.boiling.kidduramu.web.service.FileService;
 import com.boiling.kidduramu.web.service.ProductService;
+import com.boiling.kidduramu.web.service.S3UploadService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -14,11 +15,16 @@ import org.springframework.web.bind.annotation.*;
 public class ProductApiController {
 
     private final ProductService productService;
-    private final FileService fileService;
+    private final S3UploadService s3UploadService;
 
     @PostMapping("/api/product/insert")
-    public Long save(@RequestBody ProductSaveReuestDto productSaveRequestDto){
-        return productService.save(productSaveRequestDto);
+    public Long save(ProductSaveReuestDto productSaveRequestDto,
+                     @RequestPart(value = "uploadFile")MultipartFile file){
+
+        log.info("request dto : {}", productSaveRequestDto.toString());
+        log.info("request file : {}", file.getOriginalFilename());
+
+        return productService.save(productSaveRequestDto, file);
     }
 
     @PutMapping("/api/product/update/{id}")

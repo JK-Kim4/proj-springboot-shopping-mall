@@ -56,6 +56,9 @@ dependencies {
     //maria-db
     implementation('org.mariadb.jdbc:mariadb-java-client')
 
+    //S3 upload
+    implementation 'org.springframework.cloud:spring-cloud-starter-aws:2.0.1.RELEASE'
+
     //test
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 

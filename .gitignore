@@ -28,4 +28,5 @@ nbdist/
 ## oauth 설정파일
 application-oauth.properties
 application-real.properties
+application-aws.properties
 /client_secret_478954575509-j0m257j0p9sfpk4jvsdndbaloug62b49.apps.googleusercontent.com.json
