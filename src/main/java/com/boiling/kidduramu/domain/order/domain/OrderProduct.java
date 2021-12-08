@@ -30,16 +30,16 @@ public class OrderProduct {
 
     @OneToOne
     @JoinColumn(name = "PRODUCT_ID")
-    private Products orderedProduct;
+    private Products orderProduct;
 
     @Builder
     public OrderProduct(Products products, int orderCnt){
         this.orderCnt = orderCnt;
-        this.orderedProduct = products;
+        this.orderProduct = products;
         this.calcAmountPrice();
     }
 
     private int calcAmountPrice(){
-        return this.orderProductAmount = this.orderedProduct.getPrice() * this.orderCnt;
+        return this.orderProductAmount = this.orderProduct.getPrice() * this.orderCnt;
     }
 }

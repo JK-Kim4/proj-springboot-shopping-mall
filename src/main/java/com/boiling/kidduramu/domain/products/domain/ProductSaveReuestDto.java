@@ -1,6 +1,5 @@
 package com.boiling.kidduramu.domain.products.domain;
 
-import com.boiling.kidduramu.domain.products.domain.Products;
 import lombok.*;
 
 @Getter
@@ -13,14 +12,17 @@ public class ProductSaveReuestDto {
     private String desc;
     private String seller;
     private String fileUrl;
+    private int price;
 
     @Builder
     public ProductSaveReuestDto(String name, String desc,
-                                String seller, String fileUrl){
+                                String seller, String fileUrl,
+                                int price){
         this.name = name;
         this.desc = desc;
         this.seller = seller;
         this.fileUrl = fileUrl;
+        this.price = price;
     }
 
     public Products toEntity(){
@@ -29,6 +31,7 @@ public class ProductSaveReuestDto {
                 desc(desc).
                 seller(seller).
                 fileUrl(fileUrl).
+                price(price).
                 build();
     }
 

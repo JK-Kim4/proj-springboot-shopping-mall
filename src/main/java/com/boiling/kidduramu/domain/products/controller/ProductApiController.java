@@ -21,9 +21,6 @@ public class ProductApiController {
     public Long save(ProductSaveReuestDto productSaveRequestDto,
                      @RequestPart(value = "uploadFile")MultipartFile file){
 
-        log.info("request dto : {}", productSaveRequestDto.toString());
-        log.info("request file : {}", file.getOriginalFilename());
-
         return productService.save(productSaveRequestDto, file);
     }
 

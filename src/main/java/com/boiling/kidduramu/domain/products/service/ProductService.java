@@ -1,12 +1,8 @@
 package com.boiling.kidduramu.domain.products.service;
 
 
-import com.boiling.kidduramu.domain.products.domain.Products;
-import com.boiling.kidduramu.domain.products.domain.ProductsRepository;
-import com.boiling.kidduramu.domain.products.domain.ProductListResponseDto;
-import com.boiling.kidduramu.domain.products.domain.ProductSaveReuestDto;
-import com.boiling.kidduramu.domain.products.domain.ProductUpdateRequestDto;
 import com.boiling.kidduramu.common.service.S3UploadService;
+import com.boiling.kidduramu.domain.products.domain.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -55,4 +51,11 @@ public class ProductService {
                 .collect(Collectors.toList());
     }
 
+    public ProductDetails findById(Long id) {
+
+        Products products = productsRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("상품이 존재하지 않습니다."));
+
+        return new ProductDetails(products);
+    }
 }

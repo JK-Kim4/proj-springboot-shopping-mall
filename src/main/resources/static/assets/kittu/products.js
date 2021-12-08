@@ -7,6 +7,39 @@ var main = {
         $("#btn-save").on("click", function (){
             _this.save();
         });
+
+        //상세보기 버튼
+        $("#btn-detail").on("click", function (){
+            _this.detail();
+        });
+
+        //구매하기 버튼
+        $("#btn-buy").on("click", function (){
+           _this.buy();
+        });
+    },
+    buy : function (){
+      var data ={
+          productId : $("#productId").val()
+      };
+
+      $.ajax({
+          type : "POST",
+          url : "/api/products/buy",
+          data : data,
+          contentType: "application/json; charset=utf-8"
+      }).done(function (){
+          alert("구매 목록 추가");
+          location.href = "/"
+      }).fail(function (){
+          alert("구매 실패");
+          window.location.reload();
+      })
+
+
+    },
+    detail : function (){
+        console.log($(this).prev().val());
     },
     //save function
     save : function (uploadResult){

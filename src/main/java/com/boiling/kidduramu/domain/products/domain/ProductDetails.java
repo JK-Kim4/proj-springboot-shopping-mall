@@ -1,23 +1,29 @@
 package com.boiling.kidduramu.domain.products.domain;
 
 import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 
+@RequiredArgsConstructor
 @Getter
-public class ProductListResponseDto {
-    private Long id;
+@Setter
+public class ProductDetails {
+
+    private Long productId;
     private String name;
     private String desc;
-    private String seller;
     private String fileUrl;
+    private String seller;
     private int price;
 
-    public ProductListResponseDto(Products entity){
-        this.id = entity.getId();
+    public ProductDetails(Products entity){
+        this.productId = entity.getId();
         this.name = entity.getName();
         this.desc = entity.getDesc();
-        this.seller = entity.getSeller();
         this.fileUrl = entity.getFileUrl();
+        this.seller = entity.getSeller();
         this.price = entity.getPrice();
     }
+
 
 }
