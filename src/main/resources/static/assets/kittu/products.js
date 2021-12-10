@@ -3,7 +3,7 @@ var main = {
         var _this = this;
         console.log("init js file : " + _this);
 
-        //save button 클릭 시 save 함수 실행
+        //상품등록
         $("#btn-save").on("click", function (){
             _this.save();
         });
@@ -13,15 +13,23 @@ var main = {
             _this.detail();
         });
 
-        //구매하기 버튼
         $("#btn-buy").on("click", function (){
            _this.buy();
+        });
+
+        //주문하기
+        $("#btn-order").on("click", function (){
+           _this.order();
         });
 
         //장바구니
         $("#btn-cart-save").on("click", function (){
            _this.cartSave();
         });
+    },
+    buy : function (){
+        var id = $("#productId").val();
+        window.location.href = "/order/order/" + id;
     },
     cartSave : function (){
 
@@ -37,26 +45,6 @@ var main = {
         }).fail(function (){
            alert("장바구니 추가에 실패하였습니다.");
         });
-    },
-    buy : function (){
-      var data ={
-          productId : $("#productId").val()
-      };
-
-      $.ajax({
-          type : "POST",
-          url : "/api/products/buy",
-          data : data,
-          contentType: "application/json; charset=utf-8"
-      }).done(function (){
-          alert("구매 목록 추가");
-          location.href = "/"
-      }).fail(function (){
-          alert("구매 실패");
-          window.location.reload();
-      })
-
-
     },
     detail : function (){
         console.log($(this).prev().val());
