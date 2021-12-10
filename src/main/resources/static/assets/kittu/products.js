@@ -17,6 +17,26 @@ var main = {
         $("#btn-buy").on("click", function (){
            _this.buy();
         });
+
+        //장바구니
+        $("#btn-cart-save").on("click", function (){
+           _this.cartSave();
+        });
+    },
+    cartSave : function (){
+
+        $.ajax({
+            type : "POST",
+            url : "/api/cart/save",
+            data : {
+                productId : $("#productId").val()
+            },
+            contentType : "application/json; charset=utf-8"
+        }).done(function (){
+            alert("장바구니에 추가되었습니다.");
+        }).fail(function (){
+           alert("장바구니 추가에 실패하였습니다.");
+        });
     },
     buy : function (){
       var data ={

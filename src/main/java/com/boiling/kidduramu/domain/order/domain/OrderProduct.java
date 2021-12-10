@@ -26,7 +26,7 @@ public class OrderProduct {
     private int orderProductAmount;
 
 //    @Column
-//    private OrderState orderState;
+//    private OrderStatus orderstatus;
 
     @OneToOne
     @JoinColumn(name = "PRODUCT_ID")

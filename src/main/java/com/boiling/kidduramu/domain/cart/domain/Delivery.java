@@ -1,5 +1,6 @@
-package com.boiling.kidduramu.domain.order.domain;
+package com.boiling.kidduramu.domain.cart.domain;
 
+import com.boiling.kidduramu.domain.order.domain.DeliveryState;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -24,6 +25,7 @@ public class Delivery {
 
     public Delivery (String address){
         this.address = address;
+        this.deliveryState = DeliveryState.STAY;
     }
 
 }
