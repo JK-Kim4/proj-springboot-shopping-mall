@@ -17,11 +17,6 @@ var main = {
            _this.buy();
         });
 
-        //주문하기
-        $("#btn-order").on("click", function (){
-           _this.order();
-        });
-
         //장바구니
         $("#btn-cart-save").on("click", function (){
            _this.cartSave();
