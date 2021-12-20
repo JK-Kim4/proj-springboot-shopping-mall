@@ -9,7 +9,9 @@
                         <h6>상품 상세</h6>
                         <h2>상품 구매 페이지</h2>
                     </div>
-                    <img src="{{product.filePath}}" alt="">
+                    {{#product.filePath}}
+                        <img src="{{product.filePath}}" alt="">
+                    {{/product.filePath}}
                     <p>상품 등록시 주의사항 1</p>
                     <div class="row">
                     </div>
@@ -26,11 +28,6 @@
                             <div class="form-inline col-lg-12">
                                 <label for="name" class="col-sm-4"> 상 품 명 : </label>
                                 <input class="col-sm-8" type="text" id="name" value="{{product.name}}" disabled>
-                            </div>
-                            <div class="col-lg-12">
-                                <fieldset>
-                                    <textarea name="desc" rows="6" id="desc" disabled>{{product.desc}}</textarea>
-                                </fieldset>
                             </div>
                             <div class="col-lg-12">
                                 <fieldset>

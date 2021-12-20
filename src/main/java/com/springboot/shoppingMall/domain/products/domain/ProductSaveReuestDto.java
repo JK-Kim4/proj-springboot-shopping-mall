@@ -9,21 +9,18 @@ import lombok.*;
 public class ProductSaveReuestDto {
 
     private String name;
-    private String desc;
-    private int stockQuentity;
+    private int stockQuantity;
     private int categoryId;
     private String seller;
-    private String filaPath;
+    private String filePath;
     private int price;
 
     @Builder
-    public ProductSaveReuestDto(String name, String desc,
-                                String seller, String filaPath,
+    public ProductSaveReuestDto(String name, String seller, String filePath,
                                 int price, int categoryId){
         this.name = name;
-        this.desc = desc;
         this.seller = seller;
-        this.filaPath = filaPath;
+        this.filePath = filePath;
         this.price = price;
         this.categoryId = categoryId;
     }
@@ -31,9 +28,9 @@ public class ProductSaveReuestDto {
     public Product toEntity(){
         return Product.builder().
                 name(name).
-                filePath(filaPath).
+                filePath(filePath).
                 price(price).
-                stockQuentity(stockQuentity).
+                stockQuantity(stockQuantity).
                 build();
     }
 

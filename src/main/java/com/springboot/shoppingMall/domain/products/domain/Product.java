@@ -1,6 +1,6 @@
 package com.springboot.shoppingMall.domain.products.domain;
 
-import com.springboot.shoppingMall.common.error.NotEnoughStockQuentityException;
+import com.springboot.shoppingMall.common.error.NotEnoughStockQuantityException;
 import com.springboot.shoppingMall.domain.BaseTimeEntity;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -25,10 +25,6 @@ public class Product extends BaseTimeEntity {
     @Column(nullable = false)
     private String name;
 
-    //상품설명
-    @Column(nullable = false)
-    private String desc;
-
     //가격
     @Column(nullable = false)
     private int price;
@@ -36,7 +32,7 @@ public class Product extends BaseTimeEntity {
     //재고 수량
     @Column
     @ColumnDefault("0") //default 0
-    private int stockQuentity;
+    private int stockQuantity;
 
     //카테고리
     @OneToMany
@@ -48,31 +44,30 @@ public class Product extends BaseTimeEntity {
     private String filePath;
 
     @Builder
-    public Product(String name, int price, int stockQuentity, String filePath){
+    public Product(String name, int price, int stockQuantity, String filePath){
         this.filePath = filePath;
         this.name = name;
         this.price = price;
-        this.stockQuentity = stockQuentity;
+        this.stockQuantity = stockQuantity;
     }
 
-    public void removeStockQuentity(int orderQuentity){
-        int restStockQuentity = this.stockQuentity - orderQuentity;
+    public void removeStockQuantity(int orderQuantity){
+        int restStockQuantity = this.stockQuantity - orderQuantity;
 
-        if(restStockQuentity < 0)
-            throw new NotEnoughStockQuentityException();
+        if(restStockQuantity < 0)
+            throw new NotEnoughStockQuantityException();
 
-            this.stockQuentity = restStockQuentity;
+            this.stockQuantity = restStockQuantity;
 
 
     }
 
-    public void addStockQuentity(int quantity){
-        this.stockQuentity += quantity;
+    public void addStockQuantity(int quantity){
+        this.stockQuantity += quantity;
     }
 
     //상품 수정
     public void update(String name, String desc){
         this.name = name;
-        this.desc = desc;
     }
 }

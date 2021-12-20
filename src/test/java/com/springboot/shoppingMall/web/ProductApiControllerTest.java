@@ -62,13 +62,12 @@ public class ProductApiControllerTest {
         //given
         String name = "test name";
         String seller = "test seller";
-        String fileUrl = "";
+        String filePath = "";
         String desc = "test desc";
 
         ProductSaveReuestDto requestDto = ProductSaveReuestDto.builder()
                 .name(name)
-                .desc(desc)
-                .fileUrl(fileUrl)
+                .filePath(filePath)
                 .seller(seller)
                 .build();
 

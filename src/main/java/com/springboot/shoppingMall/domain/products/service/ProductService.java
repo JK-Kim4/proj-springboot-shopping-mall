@@ -60,8 +60,8 @@ public class ProductService {
         return Product.builder()
                 .name(request.getName())
                 .price(request.getPrice())
-                .filePath(request.getFilaPath())
-                .stockQuentity(request.getStockQuentity())
+                .filePath(request.getFilePath())
+                .stockQuantity(request.getStockQuantity())
                 .build();
 
     }

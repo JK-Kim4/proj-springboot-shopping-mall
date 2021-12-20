@@ -17,7 +17,7 @@ public class OrderProduct extends BaseTimeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long orderProductId;
-    private int orderQuentity;
+    private int orderQuantity;
     private int orderAmount;
 
 
@@ -27,23 +27,23 @@ public class OrderProduct extends BaseTimeEntity {
     private Product product;
 
     @Builder
-    public OrderProduct(Product product, int orderQuentity){
-        this.order(product, orderQuentity);
-        this.orderQuentity = orderQuentity;
+    public OrderProduct(Product product, int orderQuantity){
+        this.order(product, orderQuantity);
+        this.orderQuantity = orderQuantity;
         this.calculateOrderProductTotalAmount();
     }
 
-    public void order(Product product, int orderQuentity){
-        product.removeStockQuentity(orderQuentity);
+    public void order(Product product, int orderQuantity){
+        product.removeStockQuantity(orderQuantity);
         this.product = product;
     }
 
     public void calculateOrderProductTotalAmount(){
-        this.orderAmount = this.product.getPrice() * orderQuentity;
+        this.orderAmount = this.product.getPrice() * orderQuantity;
     }
 
     public void cancel(){
-        this.product.addStockQuentity(this.orderQuentity);
+        this.product.addStockQuantity(this.orderQuantity);
     }
 
 }
