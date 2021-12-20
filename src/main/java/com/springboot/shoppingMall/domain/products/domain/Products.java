@@ -1,6 +1,7 @@
 package com.springboot.shoppingMall.domain.products.domain;
 
 import com.springboot.shoppingMall.domain.BaseTimeEntity;
+import com.springboot.shoppingMall.domain.user.domain.User;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,7 +16,7 @@ public class Products extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long productId;
 
     //상품명
     @Column(nullable = false)
@@ -28,6 +29,11 @@ public class Products extends BaseTimeEntity {
     //판매자
     @Column(nullable = false)
     private String seller;
+
+    //판매자 ID
+    @ManyToOne
+    @JoinColumn(name = "USER_ID")
+    private User user;
 
     @Column(nullable = false)
     private int price;

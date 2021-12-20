@@ -30,7 +30,7 @@ public class ProductService {
         }catch (Exception e){
             log.error("product save errpr : {}",e);
         }
-        return productsRepository.save(productSaveDto.toEntity()).getId();
+        return productsRepository.save(productSaveDto.toEntity()).getProductId();
     }
 
     /*상품 수정*/

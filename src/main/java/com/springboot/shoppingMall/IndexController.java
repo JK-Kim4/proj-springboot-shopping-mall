@@ -27,7 +27,7 @@ public class IndexController {
         }
         if(!productService.findAllDesc().isEmpty()){
             log.warn("Product List : " + productService.findAllDesc().get(0).getName());
-            log.warn("Product List : " + productService.findAllDesc().get(0).getId());
+            log.warn("Product List : " + productService.findAllDesc().get(0).getProductId());
             model.addAttribute("products", productService.findAllDesc());
         }
 //        if(user.getRole() == Role.SELLER){

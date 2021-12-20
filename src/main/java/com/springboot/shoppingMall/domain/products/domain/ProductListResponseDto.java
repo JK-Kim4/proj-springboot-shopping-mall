@@ -4,7 +4,7 @@ import lombok.Getter;
 
 @Getter
 public class ProductListResponseDto {
-    private Long id;
+    private Long productId;
     private String name;
     private String desc;
     private String seller;
@@ -12,7 +12,7 @@ public class ProductListResponseDto {
     private int price;
 
     public ProductListResponseDto(Products entity){
-        this.id = entity.getId();
+        this.productId = entity.getProductId();
         this.name = entity.getName();
         this.desc = entity.getDesc();
         this.seller = entity.getSeller();
