@@ -15,7 +15,7 @@ public class ProductDetails {
     private int price;
 
     public ProductDetails(Product entity){
-        this.productId = entity.getProductId();
+        this.productId = entity.getId();
         this.name = entity.getName();
         this.filePath = entity.getFilePath();
         this.price = entity.getPrice();

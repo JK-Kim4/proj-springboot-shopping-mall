@@ -11,11 +11,9 @@ public class ProductUpdateRequestDto extends BaseTimeEntity {
 
     //상품명, 상품 설명 수정
     private String name;
-    private String desc;
 
     @Builder
-    public ProductUpdateRequestDto(String name,  String desc){
+    public ProductUpdateRequestDto(String name){
         this.name = name;
-        this.desc = desc;
     }
 }

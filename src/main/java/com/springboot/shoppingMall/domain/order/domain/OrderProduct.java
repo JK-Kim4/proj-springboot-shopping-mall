@@ -9,14 +9,13 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "order_product")
 @Getter
 @NoArgsConstructor
 public class OrderProduct extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long orderProductId;
+    private long id;
     private int orderQuantity;
     private int orderAmount;
 

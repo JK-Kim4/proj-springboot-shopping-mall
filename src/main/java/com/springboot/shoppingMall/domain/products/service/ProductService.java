@@ -1,7 +1,6 @@
 package com.springboot.shoppingMall.domain.products.service;
 
 
-import com.springboot.shoppingMall.common.service.S3UploadService;
 import com.springboot.shoppingMall.domain.products.domain.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -17,7 +16,6 @@ import java.util.stream.Collectors;
 public class ProductService {
 
     private final ProductRepository productsRepository;
-    private final S3UploadService s3UploadService;
 
     /*상품 등록*/
     @Transactional
@@ -25,7 +23,7 @@ public class ProductService {
         Product product = createProduct(productSaveReuestDto);
         Product saveProduct = productsRepository.save(product);
 
-        return saveProduct.getProductId();
+        return saveProduct.getId();
     }
 
     /*상품 수정*/
@@ -33,8 +31,6 @@ public class ProductService {
     public Long update (Long id, ProductUpdateRequestDto productUpdateRequestDto){
         Product products = productsRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("해당 상품이 존재하지 않습니다."));
-
-        products.update(productUpdateRequestDto.getName(), productUpdateRequestDto.getDesc());
 
         return id;
     }

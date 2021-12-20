@@ -12,22 +12,23 @@ import java.util.Arrays;
 import java.util.List;
 
 @Getter
+@Table(name = "orders")
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
 public class Order extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long orderId;
+    private Long id;
 
     //구매인
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "USER_ID")
+    @JoinColumn(name = "user_id")
     private User orderUser;
 
     //구매상품
     @OneToMany
-    @JoinColumn(name = "PRODUCT_ID")
+    @JoinColumn(name = "order_product_id")
     private List<OrderProduct> orderProductList;
 
     //주문 상태
@@ -38,13 +39,6 @@ public class Order extends BaseTimeEntity {
     @Column
     private int orderAmt;
 
-    //결제 금액
-    @Column
-    private int orderPrice;
-
-    //주문상태
-//    @Column
-//    private OrderStatus orderstatus;
 
     @Builder
     public Order(User orderUser, OrderProduct... orderProductList){

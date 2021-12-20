@@ -10,7 +10,7 @@ public class ProductListResponseDto {
     private int price;
 
     public ProductListResponseDto(Product entity){
-        this.productId = entity.getProductId();
+        this.productId = entity.getId();
         this.name = entity.getName();
         this.filePath = entity.getFilePath();
         this.price = entity.getPrice();

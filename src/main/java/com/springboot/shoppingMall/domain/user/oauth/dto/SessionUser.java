@@ -20,7 +20,7 @@ public class SessionUser implements Serializable {
 
 
     public SessionUser(User user){
-        this.userId = user.getUserId();
+        this.userId = user.getId();
         this.name = user.getName();
         this.email = user.getEmail();
         this.picture = user.getPicture();

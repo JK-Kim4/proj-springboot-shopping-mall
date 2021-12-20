@@ -1,6 +1,7 @@
 package com.springboot.shoppingMall.domain.products.controller;
 
 import com.springboot.shoppingMall.domain.products.domain.ProductDetails;
+import com.springboot.shoppingMall.domain.products.domain.ProductListResponseDto;
 import com.springboot.shoppingMall.domain.products.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -9,6 +10,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.util.List;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -24,6 +27,12 @@ public class ProductController {
         return "products/products-save";
     }
 
+    @GetMapping("/list")
+    public String listPage(Model model){
+        List<ProductListResponseDto> productList = productService.findAllDesc();
+        model.addAttribute("products", productList);
+        return "products/products-list";
+    }
 
     @GetMapping("/detail/{id}")
     public String getDetail(@PathVariable("id") Long id, Model model){

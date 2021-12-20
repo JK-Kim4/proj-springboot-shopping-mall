@@ -84,7 +84,6 @@ public class ProductApiControllerTest {
         List<Product> all = productsRepository.findAll();
 
         assertThat(all.get(0).getName()).isEqualTo("test name");
-        assertThat(all.get(0).getSeller()).isEqualTo("test seller");
 
     }
 
@@ -98,13 +97,11 @@ public class ProductApiControllerTest {
                         .filePath("")
                         .build());
 
-        Long updateId = savedProd.getProductId();
+        Long updateId = savedProd.getId();
         String expectedName = "update name";
-        String expectedDesc = "update desc";
 
         ProductUpdateRequestDto requestDto = ProductUpdateRequestDto.builder()
                 .name(expectedName)
-                .desc(expectedDesc)
                 .build();
 
         String url = "http://localhost:" + port + "/api/product/update/" +updateId;
@@ -120,7 +117,6 @@ public class ProductApiControllerTest {
         //then
         List<Product> all = productsRepository.findAll();
         assertThat(all.get(0).getName()).isEqualTo("update name");
-        assertThat(all.get(0).getDesc()).isEqualTo("update desc");
     }
 
 }
