@@ -5,9 +5,9 @@ import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 
-public interface ProductsRepository extends JpaRepository<Products, Long> {
+public interface ProductRepository extends JpaRepository<Product, Long> {
 
-    @Query("SELECT p FROM Products p ORDER BY p.productId DESC")
-    List<Products> findAllDesc();
+    @Query("SELECT p FROM Product p ORDER BY p.productId DESC")
+    List<Product> findAllDesc();
 
 }

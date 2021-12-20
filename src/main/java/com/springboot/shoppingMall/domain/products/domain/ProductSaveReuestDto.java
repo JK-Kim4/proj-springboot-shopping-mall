@@ -10,28 +10,30 @@ public class ProductSaveReuestDto {
 
     private String name;
     private String desc;
+    private int stockQuentity;
+    private int categoryId;
     private String seller;
-    private String fileUrl;
+    private String filaPath;
     private int price;
 
     @Builder
     public ProductSaveReuestDto(String name, String desc,
-                                String seller, String fileUrl,
-                                int price){
+                                String seller, String filaPath,
+                                int price, int categoryId){
         this.name = name;
         this.desc = desc;
         this.seller = seller;
-        this.fileUrl = fileUrl;
+        this.filaPath = filaPath;
         this.price = price;
+        this.categoryId = categoryId;
     }
 
-    public Products toEntity(){
-        return Products.builder().
+    public Product toEntity(){
+        return Product.builder().
                 name(name).
-                desc(desc).
-                seller(seller).
-                fileUrl(fileUrl).
+                filePath(filaPath).
                 price(price).
+                stockQuentity(stockQuentity).
                 build();
     }
 

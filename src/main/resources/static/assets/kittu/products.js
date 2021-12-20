@@ -68,9 +68,10 @@ var main = {
             encrypt : "multipart/form-data",
             processData: false,
             contentType: false,
-        }).done(function (){
+        }).done(function (url){
             alert("상품이 등록되었습니다.")
-            window.location.href = "/";
+            console.log("url : " + url);
+            window.location.href = url;
         }).fail(function (){
             alert("상품 등록에 실패하였습니다. 다시 시도해주세요");
             window.location.href = "/";

@@ -1,7 +1,7 @@
 package com.springboot.shoppingMall.web;
 
-import com.springboot.shoppingMall.domain.products.domain.Products;
-import com.springboot.shoppingMall.domain.products.domain.ProductsRepository;
+import com.springboot.shoppingMall.domain.products.domain.Product;
+import com.springboot.shoppingMall.domain.products.domain.ProductRepository;
 import com.springboot.shoppingMall.domain.products.domain.ProductSaveReuestDto;
 import com.springboot.shoppingMall.domain.products.domain.ProductUpdateRequestDto;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -36,7 +36,7 @@ public class ProductApiControllerTest {
     private int port;
 
     @Autowired
-    private ProductsRepository productsRepository;
+    private ProductRepository productsRepository;
 
     @Autowired
     private WebApplicationContext context;
@@ -82,7 +82,7 @@ public class ProductApiControllerTest {
                 .andExpect(status().isOk());
 
         //then
-        List<Products> all = productsRepository.findAll();
+        List<Product> all = productsRepository.findAll();
 
         assertThat(all.get(0).getName()).isEqualTo("test name");
         assertThat(all.get(0).getSeller()).isEqualTo("test seller");
@@ -93,15 +93,13 @@ public class ProductApiControllerTest {
     @WithMockUser(roles = "USER")
     public void Products_update() throws Exception{
         //given
-        Products savedProd = productsRepository.save(
-                Products.builder()
+        Product savedProd = productsRepository.save(
+                Product.builder()
                         .name("test1")
-                        .desc("test1")
-                        .fileUrl("")
-                        .seller("test1")
+                        .filePath("")
                         .build());
 
-        Long updateId = savedProd.getId();
+        Long updateId = savedProd.getProductId();
         String expectedName = "update name";
         String expectedDesc = "update desc";
 
@@ -121,7 +119,7 @@ public class ProductApiControllerTest {
                 .andExpect(status().isOk());
 
         //then
-        List<Products> all = productsRepository.findAll();
+        List<Product> all = productsRepository.findAll();
         assertThat(all.get(0).getName()).isEqualTo("update name");
         assertThat(all.get(0).getDesc()).isEqualTo("update desc");
     }

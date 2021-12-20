@@ -1,13 +1,12 @@
 package com.springboot.shoppingMall.domain.cart.domain;
 
+import com.springboot.shoppingMall.domain.products.domain.Product;
+import com.springboot.shoppingMall.domain.user.domain.User;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -18,5 +17,15 @@ public class Cart {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long cartId;
 
+    @OneToOne
+    @JoinColumn(name = "USER_ID")
+    private User user;
+
+    @ManyToOne
+    @JoinColumn(name = "PRODUCT_ID")
+    private Product products;
+
+    @Column
+    private int amount;
 
 }

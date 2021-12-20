@@ -20,7 +20,7 @@ public class OrderController {
     //주문 페이지
     @GetMapping("/order/{id}")
     public String getOrder(Model model, @PathVariable(value = "id") Long id, @LoginUser SessionUser user){
-        model.addAttribute("product", productService.findById(id));
+        model.addAttribute("product", productService.findItem(id));
         return "orders/order";
     }
 }

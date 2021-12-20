@@ -18,10 +18,12 @@ public class ProductApiController {
     private final S3UploadService s3UploadService;
 
     @PostMapping("/api/product/insert")
-    public Long save(ProductSaveReuestDto productSaveRequestDto,
+    public String  save(ProductSaveReuestDto productSaveRequestDto,
                      @RequestPart(value = "uploadFile")MultipartFile file){
 
-        return productService.save(productSaveRequestDto, file);
+        Long id = productService.save(productSaveRequestDto);
+
+        return "/product/detail/" +id;
     }
 
     @PutMapping("/api/product/update/{id}")

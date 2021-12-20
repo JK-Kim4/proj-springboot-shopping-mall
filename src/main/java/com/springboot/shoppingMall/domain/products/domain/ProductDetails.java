@@ -12,16 +12,14 @@ public class ProductDetails {
     private Long productId;
     private String name;
     private String desc;
-    private String fileUrl;
-    private String seller;
+    private String filePath;
     private int price;
 
-    public ProductDetails(Products entity){
+    public ProductDetails(Product entity){
         this.productId = entity.getProductId();
         this.name = entity.getName();
         this.desc = entity.getDesc();
-        this.fileUrl = entity.getFileUrl();
-        this.seller = entity.getSeller();
+        this.filePath = entity.getFilePath();
         this.price = entity.getPrice();
     }
 

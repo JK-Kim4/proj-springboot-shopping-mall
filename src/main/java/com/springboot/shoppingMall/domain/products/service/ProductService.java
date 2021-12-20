@@ -7,7 +7,6 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -17,26 +16,22 @@ import java.util.stream.Collectors;
 @Service
 public class ProductService {
 
-    private final ProductsRepository productsRepository;
+    private final ProductRepository productsRepository;
     private final S3UploadService s3UploadService;
 
     /*상품 등록*/
     @Transactional
-    public Long save(ProductSaveReuestDto productSaveDto, MultipartFile multipartFile){
-        try{
-            if(multipartFile != null){
-                productSaveDto.setFileUrl(s3UploadService.upload(multipartFile));
-            }
-        }catch (Exception e){
-            log.error("product save errpr : {}",e);
-        }
-        return productsRepository.save(productSaveDto.toEntity()).getProductId();
+    public Long save(ProductSaveReuestDto productSaveReuestDto){
+        Product product = createProduct(productSaveReuestDto);
+        Product saveProduct = productsRepository.save(product);
+
+        return saveProduct.getProductId();
     }
 
     /*상품 수정*/
     @Transactional
     public Long update (Long id, ProductUpdateRequestDto productUpdateRequestDto){
-        Products products = productsRepository.findById(id)
+        Product products = productsRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("해당 상품이 존재하지 않습니다."));
 
         products.update(productUpdateRequestDto.getName(), productUpdateRequestDto.getDesc());
@@ -44,6 +39,7 @@ public class ProductService {
         return id;
     }
 
+    /*상품 조회*/
     @Transactional
     public List<ProductListResponseDto> findAllDesc(){
         return productsRepository.findAllDesc().stream()
@@ -51,11 +47,23 @@ public class ProductService {
                 .collect(Collectors.toList());
     }
 
-    public ProductDetails findById(Long id) {
-
-        Products products = productsRepository.findById(id)
+    public ProductDetails findItem(Long productId){
+        Product product = productsRepository.findById(productId)
                 .orElseThrow(() -> new IllegalArgumentException("상품이 존재하지 않습니다."));
 
-        return new ProductDetails(products);
+        return new ProductDetails(product);
     }
+
+
+    private Product createProduct(ProductSaveReuestDto request){
+
+        return Product.builder()
+                .name(request.getName())
+                .price(request.getPrice())
+                .filePath(request.getFilaPath())
+                .stockQuentity(request.getStockQuentity())
+                .build();
+
+    }
+
 }
