@@ -1,6 +1,7 @@
 package com.springboot.shoppingMall.domain.order.domain;
 
 import com.springboot.shoppingMall.domain.BaseTimeEntity;
+import com.springboot.shoppingMall.domain.products.domain.Product;
 import com.springboot.shoppingMall.domain.user.domain.User;
 import lombok.AccessLevel;
 import lombok.Builder;
@@ -8,13 +9,11 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.Arrays;
-import java.util.List;
 
-@Getter
-@Table(name = "orders")
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
+@Table(name = "orders")
+@Getter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Order extends BaseTimeEntity {
 
     @Id
@@ -27,9 +26,9 @@ public class Order extends BaseTimeEntity {
     private User orderUser;
 
     //구매상품
-    @OneToMany
-    @JoinColumn(name = "order_product_id")
-    private List<OrderProduct> orderProductList;
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "product_id")
+    private Product orderProduct;
 
     //주문 상태
     @Enumerated(value = EnumType.STRING)
@@ -37,26 +36,15 @@ public class Order extends BaseTimeEntity {
 
     //주문 수량
     @Column
-    private int orderAmt;
+    private int orderCount;
 
 
     @Builder
-    public Order(User orderUser, OrderProduct... orderProductList){
+    public Order(User orderUser, Product orderProduct, int orderCount){
         this.orderUser = orderUser;
-        this.setOrderProductList(orderProductList);
+        this.orderProduct = orderProduct;
         this.status = OrderStatus.ORDERED;
-    }
-
-    private void setOrderProductList(OrderProduct... orderProductList){
-        Arrays.stream(orderProductList)
-                .forEach(orderProduct -> this.orderProductList.add(orderProduct));
-        this.calculateTotalAmount();
-    }
-
-    private void calculateTotalAmount(){
-        this.orderAmt = this.orderProductList.stream()
-                .mapToInt(orderProduct -> orderProduct.getOrderAmount())
-                .sum();
+        this.orderCount = orderCount;
     }
 
 //    private int calcAmountPrice(){

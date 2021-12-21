@@ -1,7 +1,7 @@
 package com.springboot.shoppingMall.domain.products.controller;
 
-import com.springboot.shoppingMall.domain.products.domain.ProductSaveReuestDto;
-import com.springboot.shoppingMall.domain.products.domain.ProductUpdateRequestDto;
+import com.springboot.shoppingMall.domain.products.dto.ProductSaveReuestDto;
+import com.springboot.shoppingMall.domain.products.dto.ProductUpdateRequestDto;
 import com.springboot.shoppingMall.domain.products.service.ProductService;
 import com.springboot.shoppingMall.common.service.S3UploadService;
 import lombok.RequiredArgsConstructor;

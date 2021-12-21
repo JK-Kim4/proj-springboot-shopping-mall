@@ -2,6 +2,10 @@ package com.springboot.shoppingMall.domain.products.service;
 
 
 import com.springboot.shoppingMall.domain.products.domain.*;
+import com.springboot.shoppingMall.domain.products.dto.ProductDetails;
+import com.springboot.shoppingMall.domain.products.dto.ProductListResponseDto;
+import com.springboot.shoppingMall.domain.products.dto.ProductSaveReuestDto;
+import com.springboot.shoppingMall.domain.products.dto.ProductUpdateRequestDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

@@ -1273,6 +1273,22 @@ reservation
   margin-bottom: 30px;
 }
 
+/*order form css 추가*/
+#orderForm {
+  margin-left: 30px;
+  padding: 45px 30px;
+  background-color: #50575e;
+  border-radius: 5px;
+}
+
+#orderForm h4 {
+  text-align: center;
+  font-weight: 700;
+  font-size: 30px;
+  color: #2a2a2a;
+  margin-bottom: 30px;
+}
+
 .datepicker-days {
   padding: 30px;
   cursor: pointer;

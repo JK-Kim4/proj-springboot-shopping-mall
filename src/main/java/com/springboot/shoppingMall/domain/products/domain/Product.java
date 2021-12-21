@@ -14,7 +14,6 @@ import java.util.List;
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class Product extends BaseTimeEntity {
 
     @Id

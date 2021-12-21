@@ -1,5 +1,6 @@
-package com.springboot.shoppingMall.domain.products.domain;
+package com.springboot.shoppingMall.domain.products.dto;
 
+import com.springboot.shoppingMall.domain.products.domain.Product;
 import lombok.*;
 
 @Getter

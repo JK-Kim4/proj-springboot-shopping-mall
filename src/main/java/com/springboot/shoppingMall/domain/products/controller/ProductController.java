@@ -1,7 +1,7 @@
 package com.springboot.shoppingMall.domain.products.controller;
 
-import com.springboot.shoppingMall.domain.products.domain.ProductDetails;
-import com.springboot.shoppingMall.domain.products.domain.ProductListResponseDto;
+import com.springboot.shoppingMall.domain.products.dto.ProductDetails;
+import com.springboot.shoppingMall.domain.products.dto.ProductListResponseDto;
 import com.springboot.shoppingMall.domain.products.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

@@ -2,8 +2,8 @@ package com.springboot.shoppingMall.web;
 
 import com.springboot.shoppingMall.domain.products.domain.Product;
 import com.springboot.shoppingMall.domain.products.domain.ProductRepository;
-import com.springboot.shoppingMall.domain.products.domain.ProductSaveReuestDto;
-import com.springboot.shoppingMall.domain.products.domain.ProductUpdateRequestDto;
+import com.springboot.shoppingMall.domain.products.dto.ProductSaveReuestDto;
+import com.springboot.shoppingMall.domain.products.dto.ProductUpdateRequestDto;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.After;
 import org.junit.Before;

@@ -7,6 +7,10 @@ var orderMain = {
             $("#orderForm").submit();
         });
 
+        $("#btn-pay").on("click", function (){
+           $("#payForm").submit();
+        });
+
     },
     order : function (){
         var data = {
