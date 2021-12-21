@@ -10,18 +10,22 @@
                                 <h4>주문 상품 정보</h4>
                             </div>
                             <div class="form-inline col-lg-12">
-                                <label for="name" class="col-sm-4"> 상 품 명 : {{product.name}}</label>
+                                <label for="name" class="col-sm-4"> 상 품 명 : </label>
+                                <input class="col-sm-6" type="text" id="name" value="{{product.name}}" disabled>
                             </div>
                             <br>
                             <div class="form-inline col-lg-12">
-                                <label for="seller" class="col-sm-4"> 가격  : </label>
-                                <input class="col-sm-8" type="text" value="{{product.price}}" disabled>
+                                <label for="seller" class="col-sm-4"> 가 격 : </label>
+                                <input class="col-sm-6" type="text" id="name" value="{{product.price}}" disabled>
                             </div>
                             <br>
                             <div class="form-inline col-lg-12">
                                 <label for="picture" class="col-sm-4"> 상품 사진 : </label>
                                 {{#product.filePath}}
-                                <input class="col-sm-8" type="text" name="picture" id="picture" value="{{product.filePath}}" required="">
+                                    <img src="{{product.filePath}}" alt="">
+                                {{/product.filePath}}
+                                {{^product.filePath}}
+                                    <img src="/asserts/images/default.png" alt="기본이미지">
                                 {{/product.filePath}}
                             </div>
                             <br>

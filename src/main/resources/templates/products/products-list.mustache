@@ -19,20 +19,21 @@
                                     <div class="col-lg-6">
                                         <div class="row">
                                             <div class="left-list">
+                                            <div class="col-lg-12">
                                                 {{#products}}
-                                                <div class="col-lg-12">
                                                     <div class="tab-item">
                                                         {{#filePath}}
                                                             <img src="{{filePath}}" alt="">
                                                         {{/filePath}}
-                                                        <h4>{{name}}</h4>
-                                                        <div class="price">
-                                                            <h6>{{price}} 원</h6>
-                                                        </div>
+                                                        {{^filePath}}
+                                                            <img src="/assets/images/default.png" alt="기본이미지">
+                                                        {{/filePath}}
+                                                        <h4>상품명 : {{name}}</h4>
+                                                        <h4>가격 : {{price}} 원</h4>
                                                         <button type="button" onclick="window.location.href='/product/detail/{{productId}}'">구매 하기</button>
                                                     </div>
-                                                </div>
                                                 {{/products}}
+                                            </div>
                                             </div>
                                         </div>
                                     </div>
