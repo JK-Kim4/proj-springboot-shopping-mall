@@ -19,7 +19,7 @@ apply plugin: 'io.spring.dependency-management'
 group = 'com.boiling'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '1.8'
-apply plugin : 'war'
+//apply plugin : 'war'
 
 configurations {
     compileOnly {
@@ -31,8 +31,8 @@ repositories {
     mavenCentral()
 }
 
-bootWar.enabled = false
-war.enabled = true
+//bootWar.enabled = false
+//war.enabled = true
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
@@ -68,12 +68,12 @@ dependencies {
     //oauth test
     testImplementation('org.springframework.security:spring-security-test')
     //tomcat ( 외장 톰갯으로 구동 가능하도록 설정 )
-    providedRuntime('org.springframework.boot:spring-boot-starter-tomcat')
+    //providedRuntime('org.springframework.boot:spring-boot-starter-tomcat')
 }
 
-bootWar {
-    archiveName("demo.war")
-}
+//bootWar {
+//    archiveName("demo.war")
+//}
 
 test {
     useJUnitPlatform()
