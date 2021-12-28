@@ -10,6 +10,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 @Slf4j
 @RequiredArgsConstructor
 @Controller
@@ -30,9 +33,11 @@ public class IndexController {
             log.warn("Product List : " + productService.findAllDesc().get(0).getProductId());
             model.addAttribute("products", productService.findAllDesc());
         }
-//        if(user.getRole() == Role.SELLER){
-//            model.addAttribute("seller", user.getRole());
-//        }
+        LocalDateTime now = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+        String nowFormat = now.format(formatter);
+
+        log.info("someone comes in : " + nowFormat);
         return "index";
     }
 
