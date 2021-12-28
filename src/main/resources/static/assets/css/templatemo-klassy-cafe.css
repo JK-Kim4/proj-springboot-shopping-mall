@@ -922,21 +922,21 @@ menu
   overflow: hidden;
 }
 
-.card1 {
-  background-image: url(../images/menu-item-01.jpg);
-}
-.card2 {
-  background-image: url(../images/menu-item-02.jpg);
-}
-.card3 {
-  background-image: url(../images/menu-item-03.jpg);
-}
-.card4 {
-  background-image: url(../images/menu-item-04.jpg);
-}
-.card5 {
-  background-image: url(../images/menu-item-05.jpg);
-}
+/*.card1 {*/
+/*  background-image: url(../images/menu-item-01.jpg);*/
+/*}*/
+/*.card2 {*/
+/*  background-image: url(../images/menu-item-02.jpg);*/
+/*}*/
+/*.card3 {*/
+/*  background-image: url(../images/menu-item-03.jpg);*/
+/*}*/
+/*.card4 {*/
+/*  background-image: url(../images/menu-item-04.jpg);*/
+/*}*/
+/*.card5 {*/
+/*  background-image: url(../images/menu-item-05.jpg);*/
+/*}*/
 
 .info {
   position: relative;
