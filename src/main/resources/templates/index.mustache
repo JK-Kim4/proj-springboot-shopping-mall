@@ -65,7 +65,7 @@
                     {{#products}}
                         <div class="item">
                             {{#filePath}}
-                            <div class='card card{{productId}}' style="background-image: {{filePath}}">
+                            <div class='card card{{productId}}' style="background-image: url('{{filePath}}')">
                             {{/filePath}}
                             {{^filePath}}
                             <div class='card card{{productId}}'>
