@@ -14,7 +14,8 @@ var main = {
         $.ajax({
             url : "/user/delete/" + userId,
             type : "DELETE",
-            dataType : "application/json; charset=utf-8"
+            // dataType : "application/json; charset=utf-8"
+            dataType : "text"
         }).done(function (data){
             console.log(data);
             alert("탈퇴가 완료되었습니다.")

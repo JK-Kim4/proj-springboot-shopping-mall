@@ -9,6 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
+
 @Slf4j
 @Controller
 @RequiredArgsConstructor
@@ -24,10 +26,11 @@ public class UserController {
 
     @DeleteMapping("/delete/{userId}")
     @ResponseBody
-    public Long delete(@PathVariable Long userId){
+    public Long delete(@PathVariable Long userId, HttpSession session){
         log.info("login user @ delete : " + userRepository.findById(userId).get().toString());
 
          userRepository.delete(userRepository.findById(userId).get());
+         session.invalidate();
 
          return userId;
     }
