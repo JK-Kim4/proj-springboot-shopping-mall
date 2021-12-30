@@ -57,19 +57,21 @@
                         -->
                         <li class="scroll-to-section"><a href="#menu">고객 센터</a></li>
                         {{#user}}
-                            <li>
-                                <p>Logged user name : {{name}}</p>
-                                {{#seller}}
-                                    <li class="submenu">
-                                        <a href="javascript:;">상품 관리</a>
-                                        <ul>
-                                            <li><a href="/product/save"><p> 상품 등록</p></a></li>
-                                            <li><a href="#">판매중 상품 (준비중)</a></li>
-                                        </ul>
-                                    </li>
-
-                                {{/seller}}
-                                <a href="/logout">Logout</a>
+                            {{#seller}}
+                                <li class="submenu">
+                                    <a href="javascript:(0);">상품 관리</a>
+                                    <ul>
+                                        <li><a href="/product/save"><p> 상품 등록</p></a></li>
+                                        <li><a href="#">판매중 상품 (준비중)</a></li>
+                                    </ul>
+                                </li>
+                            {{/seller}}
+                            <li class="submenu">
+                                <a href="javascript:(0);">회원 관리</a>
+                                <ul>
+                                    <li><a href="/logout">로그아웃</a></li>
+                                    <li><a href="/user/detail">회원 상세 정보</a></li>
+                                </ul>
                             </li>
                         {{/user}}
                         {{^user}}
