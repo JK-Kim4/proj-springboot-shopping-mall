@@ -1,4 +1,4 @@
-package com.springboot.shoppingMall.domain.user;
+package com.springboot.shoppingMall.domain.user.entity;
 
 import com.springboot.shoppingMall.domain.BaseTimeEntity;
 import lombok.Builder;
