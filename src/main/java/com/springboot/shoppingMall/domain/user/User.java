@@ -1,6 +1,7 @@
 package com.springboot.shoppingMall.domain.user;
 
 import com.springboot.shoppingMall.domain.BaseTimeEntity;
+import lombok.Builder;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
@@ -24,6 +25,7 @@ public class User extends BaseTimeEntity {
     private String email;
 
     //enum
+    @Enumerated(EnumType.STRING)
     @Column
     private String userRole;
 
@@ -35,6 +37,18 @@ public class User extends BaseTimeEntity {
 
     @Column
     private int loginFailCount;
+
+    @Builder
+    public User (String id, String password, String email,
+                 String userRole, String nickname, boolean validation, int loginFailCount){
+        this.id = id;
+        this.password = password;
+        this.email = email;
+        this.userRole = userRole;
+        this.nickname = nickname;
+        this.validation = validation;
+        this.loginFailCount = loginFailCount;
+    }
 
 
 }
