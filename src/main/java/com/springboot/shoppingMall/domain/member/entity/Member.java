@@ -2,13 +2,19 @@ package com.springboot.shoppingMall.domain.member.entity;
 
 import com.springboot.shoppingMall.domain.BaseTimeEntity;
 import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
 import java.util.List;
 
-@Entity
+@Getter
 @NoArgsConstructor
+@Entity
+@DynamicInsert
+@DynamicUpdate
 public class Member extends BaseTimeEntity {
 
     @Id

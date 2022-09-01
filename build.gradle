@@ -63,10 +63,11 @@ dependencies {
     //implementation 'org.springframework.cloud:spring-cloud-starter-aws:2.0.1.RELEASE'
 
     //test
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation('org.springframework.boot:spring-boot-starter-test')
+
 
     //oauth test
-    testImplementation('org.springframework.security:spring-security-test')
+    //testImplementation('org.springframework.security:spring-security-test')
     //tomcat ( 외장 톰갯으로 구동 가능하도록 설정 )
     //providedRuntime('org.springframework.boot:spring-boot-starter-tomcat')
 }
