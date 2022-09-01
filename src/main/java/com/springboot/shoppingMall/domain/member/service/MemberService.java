@@ -1,4 +1,4 @@
-package com.springboot.shoppingMall.domain.user.service;
+package com.springboot.shoppingMall.domain.member.service;
 
 import org.springframework.stereotype.Service;
 

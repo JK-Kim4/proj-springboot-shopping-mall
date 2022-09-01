@@ -1,4 +1,4 @@
-package com.springboot.shoppingMall.domain.user.entity;
+package com.springboot.shoppingMall.domain.member.entity;
 
 import lombok.NoArgsConstructor;
 
