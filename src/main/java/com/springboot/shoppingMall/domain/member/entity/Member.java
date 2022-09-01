@@ -45,7 +45,7 @@ public class Member extends BaseTimeEntity {
     @Column
     private int loginFailCount;
 
-    @OneToMany(mappedBy = "member")
+    @OneToMany(mappedBy = "member", cascade = CascadeType.REMOVE)
     private List<MemberAuthentication> authentications;
 
     @Builder
