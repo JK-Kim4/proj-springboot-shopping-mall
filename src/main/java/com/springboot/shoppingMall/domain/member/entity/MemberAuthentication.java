@@ -19,10 +19,11 @@ public class MemberAuthentication {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE) //H2
+    @Column(name = "MEMBER_AUTHENTICATION_SEQ")
     private Long seq;
 
     @ManyToOne
-    @JoinColumn(name = "member_seq")
+    @JoinColumn(name = "MEMBER_SEQ")
     private Member member;
 
     @Column
@@ -37,4 +38,13 @@ public class MemberAuthentication {
         this.authenticationKey = authenticationKey;
         this.expiredDate = expiredDate;
     }
+
+    public void setMember(Member member){
+        this.member = member;
+
+        if(!member.getAuthentications().contains(this)){
+            member.getAuthentications().add(this);
+        }
+    }
+
 }

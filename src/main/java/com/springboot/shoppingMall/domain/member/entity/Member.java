@@ -8,6 +8,7 @@ import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -20,6 +21,7 @@ public class Member extends BaseTimeEntity {
     @Id
     //@GeneratedValue(strategy = GenerationType.IDENTITY) //Mysql
     @GeneratedValue(strategy = GenerationType.SEQUENCE) //H2
+    @Column(name = "MEMBER_SEQ")
     private Long memberSeq;
 
     @Column
@@ -46,7 +48,7 @@ public class Member extends BaseTimeEntity {
     private int loginFailCount;
 
     @OneToMany(mappedBy = "member", cascade = CascadeType.REMOVE)
-    private List<MemberAuthentication> authentications;
+    private List<MemberAuthentication> authentications = new ArrayList<MemberAuthentication>();
 
     @Builder
     public Member(String id, String password, String email,
