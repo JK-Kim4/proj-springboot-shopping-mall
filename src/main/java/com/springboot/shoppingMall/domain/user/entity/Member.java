@@ -5,15 +5,16 @@ import lombok.Builder;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @NoArgsConstructor
-public class User extends BaseTimeEntity {
+public class Member extends BaseTimeEntity {
 
     @Id
     //@GeneratedValue(strategy = GenerationType.IDENTITY) //Mysql
     @GeneratedValue(strategy = GenerationType.SEQUENCE) //H2
-    private Long seq;
+    private Long memberSeq;
 
     @Column
     private String id;
@@ -27,7 +28,7 @@ public class User extends BaseTimeEntity {
     //enum
     @Enumerated(EnumType.STRING)
     @Column
-    private String userRole;
+    private MemberRole memberRole;
 
     @Column
     private boolean validation;
@@ -38,13 +39,16 @@ public class User extends BaseTimeEntity {
     @Column
     private int loginFailCount;
 
+    @OneToMany(mappedBy = "member")
+    private List<MemberAuthentication> authentications;
+
     @Builder
-    public User (String id, String password, String email,
-                 String userRole, String nickname, boolean validation, int loginFailCount){
+    public Member(String id, String password, String email,
+                  MemberRole memberRole, String nickname, boolean validation, int loginFailCount){
         this.id = id;
         this.password = password;
         this.email = email;
-        this.userRole = userRole;
+        this.memberRole = memberRole;
         this.nickname = nickname;
         this.validation = validation;
         this.loginFailCount = loginFailCount;

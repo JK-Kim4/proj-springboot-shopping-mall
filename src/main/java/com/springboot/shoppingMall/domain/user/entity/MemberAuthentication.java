@@ -2,18 +2,20 @@ package com.springboot.shoppingMall.domain.user.entity;
 
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
 
 @Entity
 @NoArgsConstructor
-public class UserAuthentication {
+public class MemberAuthentication {
 
     @Id
     private Long seq;
+
+    @ManyToOne
+    @JoinColumn(name = "member_seq")
+    private Member member;
 
     @Column
     private String authenticationKey;
