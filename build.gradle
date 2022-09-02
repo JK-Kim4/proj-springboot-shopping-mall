@@ -65,6 +65,11 @@ dependencies {
     //test
     testImplementation('org.springframework.boot:spring-boot-starter-test')
 
+    //JavaMail api
+    implementation group: 'com.sun.mail', name: 'javax.mail', version: '1.6.2'
+
+
+
 
     //oauth test
     //testImplementation('org.springframework.security:spring-security-test')
