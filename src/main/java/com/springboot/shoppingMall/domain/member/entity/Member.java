@@ -25,13 +25,10 @@ public class Member extends BaseTimeEntity {
     private Long memberSeq;
 
     @Column
-    private String id;
+    private String email;
 
     @Column
     private String password;
-
-    @Column
-    private String email;
 
     //enum
     @Enumerated(EnumType.STRING)
@@ -51,9 +48,8 @@ public class Member extends BaseTimeEntity {
     private List<MemberAuthentication> authentications = new ArrayList<MemberAuthentication>();
 
     @Builder
-    public Member(String id, String password, String email,
+    public Member(String password, String email,
                   MemberRole memberRole, String nickname, boolean validation, int loginFailCount){
-        this.id = id;
         this.password = password;
         this.email = email;
         this.memberRole = memberRole;

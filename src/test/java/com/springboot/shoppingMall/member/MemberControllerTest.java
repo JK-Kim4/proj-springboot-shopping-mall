@@ -38,7 +38,6 @@ public class MemberControllerTest {
         String passwd = "test";
 
         Member mem = Member.builder()
-                .id(id)
                 .password(passwd)
                 .build();
 
@@ -47,7 +46,6 @@ public class MemberControllerTest {
         List<Member> memberList = memberRepository.findAll();
 
         Member result = memberList.get(0);
-        assertThat(result.getId()).isEqualTo(id);
         assertThat(result.getPassword()).isEqualTo(passwd);
 
     }
@@ -57,7 +55,7 @@ public class MemberControllerTest {
         String id = "member01";
         String pwd = "memberpwd";
 
-        memberRepository.save(Member.builder().id(id).password(pwd).build());
+        memberRepository.save(Member.builder().password(pwd).build());
 
         List<Member> memberList = memberRepository.findAll();
         Member result = memberList.get(0);
@@ -72,7 +70,6 @@ public class MemberControllerTest {
 
         MemberAuthentication resultAuth = memberAuthenticationList.get(0);
 
-        System.out.println("memberAuthentication@member = " + resultAuth.getMember().getId());
         System.out.println("memberAuthentication@member = " + resultAuth.getMember().getMemberSeq());
         System.out.println("memberAuthentication@member = " + memberSeq);
 
