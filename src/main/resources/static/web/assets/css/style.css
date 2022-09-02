@@ -1745,7 +1745,7 @@ ol {
 
 .login__form form .input__item {
 	position: relative;
-	width: 370px;
+	width: 450px;
 	margin-bottom: 20px;
 }
 
@@ -2339,4 +2339,11 @@ ol {
 	.anime__review__item__text {
 		padding: 18px 20px 20px;
 	}
+}
+
+#authentication_num {
+	position: relative;
+	width: 250px;
+	margin-top: 10px;
+	display: none;
 }
