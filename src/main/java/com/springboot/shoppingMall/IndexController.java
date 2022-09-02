@@ -10,9 +10,20 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class IndexController {
 
-    @GetMapping(value = {"/index", "/"})
-    public String index(){
-        return "/admin/index";
+    @GetMapping("/web/index")
+    public String webIndex(){
+
+        return "/web/index";
+    }
+
+    @GetMapping("/web/login")
+    public String webLogin(){
+        return "/web/contents/member/login";
+    }
+
+    @GetMapping("/web/signup")
+    public String webSignup(){
+        return "/web/contents/member/registration";
     }
 
 }
