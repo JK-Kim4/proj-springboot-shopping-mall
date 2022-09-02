@@ -1,8 +1,6 @@
 package com.springboot.shoppingMall.member;
 
 import com.springboot.shoppingMall.domain.member.entity.Member;
-import com.springboot.shoppingMall.domain.member.entity.MemberAuthentication;
-import com.springboot.shoppingMall.domain.member.entity.MemberAuthenticationRepository;
 import com.springboot.shoppingMall.domain.member.entity.MemberRepository;
 import org.junit.After;
 import org.junit.Test;
@@ -22,13 +20,13 @@ public class MemberControllerTest {
     @Autowired
     MemberRepository memberRepository;
 
-    @Autowired
-    MemberAuthenticationRepository memberAuthenticationRepository;
+//    @Autowired
+//    MemberAuthenticationRepository memberAuthenticationRepository;
 
     @After
     public void cleanUp(){
         memberRepository.deleteAll();
-        memberAuthenticationRepository.deleteAll();
+//        memberAuthenticationRepository.deleteAll();
     }
 
     @Test
@@ -50,30 +48,30 @@ public class MemberControllerTest {
 
     }
 
-    @Test
-    public void member_auth_등록테스트(){
-        String id = "member01";
-        String pwd = "memberpwd";
-
-        memberRepository.save(Member.builder().password(pwd).build());
-
-        List<Member> memberList = memberRepository.findAll();
-        Member result = memberList.get(0);
-        Long memberSeq = result.getMemberSeq();
-        String key = "testkey";
-
-        System.out.println("insert member Seq : " + memberSeq);
-
-        memberAuthenticationRepository.save(MemberAuthentication.builder().member(result).authenticationKey(key).build());
-
-        List<MemberAuthentication> memberAuthenticationList = memberAuthenticationRepository.findAll();
-
-        MemberAuthentication resultAuth = memberAuthenticationList.get(0);
-
-        System.out.println("memberAuthentication@member = " + resultAuth.getMember().getMemberSeq());
-        System.out.println("memberAuthentication@member = " + memberSeq);
-
-        assertThat(memberSeq).isEqualTo(resultAuth.getMember().getMemberSeq());
-
-    }
+//    @Test
+//    public void member_auth_등록테스트(){
+//        String id = "member01";
+//        String pwd = "memberpwd";
+//
+//        memberRepository.save(Member.builder().password(pwd).build());
+//
+//        List<Member> memberList = memberRepository.findAll();
+//        Member result = memberList.get(0);
+//        Long memberSeq = result.getMemberSeq();
+//        String key = "testkey";
+//
+//        System.out.println("insert member Seq : " + memberSeq);
+//
+//        memberAuthenticationRepository.save(MemberAuthentication.builder().member(result).authenticationKey(key).build());
+//
+//        List<MemberAuthentication> memberAuthenticationList = memberAuthenticationRepository.findAll();
+//
+//        MemberAuthentication resultAuth = memberAuthenticationList.get(0);
+//
+//        System.out.println("memberAuthentication@member = " + resultAuth.getMember().getMemberSeq());
+//        System.out.println("memberAuthentication@member = " + memberSeq);
+//
+//        assertThat(memberSeq).isEqualTo(resultAuth.getMember().getMemberSeq());
+//
+//    }
 }

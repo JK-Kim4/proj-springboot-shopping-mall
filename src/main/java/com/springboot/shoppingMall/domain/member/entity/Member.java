@@ -8,8 +8,6 @@ import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 @Getter
 @NoArgsConstructor
@@ -44,8 +42,8 @@ public class Member extends BaseTimeEntity {
     @Column
     private int loginFailCount;
 
-    @OneToMany(mappedBy = "member", cascade = CascadeType.REMOVE)
-    private List<MemberAuthentication> authentications = new ArrayList<MemberAuthentication>();
+/*    @OneToMany(mappedBy = "member", cascade = CascadeType.REMOVE)
+    private List<MemberAuthentication> authentications = new ArrayList<MemberAuthentication>();*/
 
     @Builder
     public Member(String password, String email,
