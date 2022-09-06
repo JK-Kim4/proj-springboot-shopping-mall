@@ -3,12 +3,12 @@ package com.springboot.shoppingMall.common;
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+import java.util.HashMap;
 import java.util.Properties;
 
 public class MailSender {
 
-
-    public static void main(String[] args) {
+    public static void sendMail(HashMap<String, Object> param){
         Properties props = new Properties();
         props.put("mail.smtp.host", "smtp.gmail.com");
         props.put("mail.smtp.port", "587");
@@ -23,9 +23,12 @@ public class MailSender {
             }
         });
 
-        String receiver = "jongbell4@gmail.com"; // 메일 받을 주소
-        String title = "테스트 메일입니다.";
-        String content = "<h2 style='color:blue'>안녕하세요</h2>";
+        //String receiver = "jongbell4@gmail.com"; // 메일 받을 주소
+        String receiver = (String) param.get("receiver");
+//        String title = "테스트 메일입니다.";
+        String title = (String) param.get("title");
+//        String content = "<h2 style='color:blue'>안녕하세요</h2>";
+        String content = (String) param.get("content");
         Message message = new MimeMessage(session);
         try {
             message.setFrom(new InternetAddress("test@gmail.com", "관리자", "utf-8"));
