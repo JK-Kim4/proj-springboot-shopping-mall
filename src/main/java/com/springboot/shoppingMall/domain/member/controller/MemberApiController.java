@@ -1,5 +1,6 @@
 package com.springboot.shoppingMall.domain.member.controller;
 
+import com.springboot.shoppingMall.common.CommonUtil;
 import com.springboot.shoppingMall.common.MailSender;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -22,12 +23,13 @@ public class MemberApiController {
     @ResponseBody
     public boolean sendValidation(String email){
         HashMap<String, Object> param = new HashMap<>();
+        String validation = CommonUtil.getRandomNumber(6);
 
         log.debug("MemberApiController@sendValidation = {}", email);
 
 
         param.put("receiver", "jongbell4@gmail.com");
-        param.put("title", "인증번호");
+        param.put("title", validation);
         param.put("content", "12345");
 
         return MailSender.sendMail(param);
