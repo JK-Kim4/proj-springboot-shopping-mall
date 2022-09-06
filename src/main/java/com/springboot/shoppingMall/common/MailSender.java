@@ -8,7 +8,10 @@ import java.util.Properties;
 
 public class MailSender {
 
-    public static void sendMail(HashMap<String, Object> param){
+    public static boolean sendMail(HashMap<String, Object> param){
+
+        boolean result = false;
+
         Properties props = new Properties();
         props.put("mail.smtp.host", "smtp.gmail.com");
         props.put("mail.smtp.port", "587");
@@ -37,8 +40,10 @@ public class MailSender {
             message.setContent(content, "text/html; charset=utf-8");
 
             Transport.send(message);
+            result = true;
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return result;
     }
 }

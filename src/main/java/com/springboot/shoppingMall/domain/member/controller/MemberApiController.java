@@ -20,10 +20,17 @@ public class MemberApiController {
 
     @PostMapping("/send/validation")
     @ResponseBody
-    public String sendValidation(){
+    public boolean sendValidation(String email){
         HashMap<String, Object> param = new HashMap<>();
-        MailSender.sendMail(param);
-        return null;
+
+        log.debug("MemberApiController@sendValidation = {}", email);
+
+
+        param.put("receiver", "jongbell4@gmail.com");
+        param.put("title", "인증번호");
+        param.put("content", "12345");
+
+        return MailSender.sendMail(param);
     }
 
 }

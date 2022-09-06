@@ -15,16 +15,21 @@ let main = {
     },
     sendValidationNum : function (email){
 
-        alert(email);
-
-        /*$.ajax({
-            url : "",
+        $.ajax({
+            url : "/member/api/send/validation",
             method : "post",
             dataType : "json",
             data : email,
             success : function (result){
-                alert(email + "로 인증번호를 전송하였습니다.");
-                return;
+                console.log(result);
+
+                if(result == true){
+                    alert(email + "로 인증번호를 전송하였습니다.");
+                    return;
+                }else{
+                    alert("이메일 전송 실패");
+                    return;
+                }
             },
             error : function (x, h, r){
                 console.log(x);
@@ -32,7 +37,7 @@ let main = {
                 return;
             }
 
-        });*/
+        });
     }
 }
 
