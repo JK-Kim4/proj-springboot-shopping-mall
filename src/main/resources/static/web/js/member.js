@@ -12,11 +12,15 @@ let main = {
                 return;
             }
         });
+
+        $("#signUpButton").on('click', function (){
+            _this.signUp();
+        })
     },
     sendValidationNum : function (email){
 
         $.ajax({
-            url : "/member/api/send/validation",
+            url : "/member/send/validation",
             method : "post",
             dataType : "json",
             data : email,
@@ -38,6 +42,9 @@ let main = {
             }
 
         });
+    },
+    signUp : function (){
+
     }
 }
 
