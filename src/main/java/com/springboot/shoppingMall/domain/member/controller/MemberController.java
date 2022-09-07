@@ -31,18 +31,20 @@ public class MemberController {
 
     @PostMapping("/send/validation")
     @ResponseBody
-    public boolean sendValidation(String email){
+    public HashMap<String, Object> sendValidation(@RequestBody String email){
+        log.info("MemberApiController@sendValidation = {}", email);
         HashMap<String, Object> param = new HashMap<>();
+        HashMap<String, Object> result = new HashMap<>();
         String validation = CommonUtil.getRandomNumber(6);
 
-        log.debug("MemberApiController@sendValidation = {}", email);
+        param.put("receiver", email);
+        param.put("title", "인증번호 발송 메일");
+        param.put("content", validation);
 
+        result.put("result", MailSender.sendMail(param));
+        result.put("valid", validation);
 
-        param.put("receiver", "jongbell4@gmail.com");
-        param.put("title", validation);
-        param.put("content", "12345");
-
-        return MailSender.sendMail(param);
+        return result;
     }
 
     @PostMapping("/signUp")

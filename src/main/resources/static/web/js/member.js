@@ -3,7 +3,7 @@ let main = {
         let _this = this;
 
         $("#sendValidationNum").on('click', function (){
-            let email = $("#inputEmail").val();
+            let email = $("#inputEmail").val().trim();
             if(email != undefined && email != ''){
                 _this.sendValidationNum(email);
             }else{
@@ -17,18 +17,22 @@ let main = {
             _this.signUp();
         })
     },
-    sendValidationNum : function (email){
+    sendValidationNum : function (){
+
+        let email = $("#inputEmail").val().trim();
 
         $.ajax({
             url : "/member/send/validation",
             method : "post",
             dataType : "json",
+            contentType: 'application/json; charset=utf-8',
             data : email,
-            success : function (result){
-                console.log(result);
+            success : function (data){
+                console.log(data);
 
-                if(result == true){
+                if(data.result == true){
                     alert(email + "로 인증번호를 전송하였습니다.");
+                    $("#validNum").val(data.valid);
                     return;
                 }else{
                     alert("이메일 전송 실패");

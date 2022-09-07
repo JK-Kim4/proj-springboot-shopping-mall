@@ -24,7 +24,7 @@
                     <h3>회원 가입</h3>
                     <form action="#">
                         <div class="input__item">
-                            <input type="text" id="inputEmail" name="inputEmail" placeholder="Email address">
+                            <input type="email" id="inputEmail" name="inputEmail" placeholder="Email address">
                             <span class="icon_mail"></span>
                         </div>
                         <div class="input__item">
@@ -35,6 +35,7 @@
                             <input type="text" placeholder="Password">
                             <span class="icon_lock"></span>
                         </div>
+                        <input type="hidden" name="validNum" id="validNum">
                         <button type="button" class="site-btn" id="sendValidationNum">인증번호 전송</button>
                         <button type="submit" class="site-btn" id="signUpButton">SignUp Now</button>
                     </form>
