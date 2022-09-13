@@ -7,7 +7,7 @@
             <div class="col-lg-12 text-center">
                 <div class="normal__breadcrumb__text">
                     <h2>Sign Up</h2>
-                    <p>Welcome to the official Anime blog.</p>
+                    <p>Welcome to the official Anime blog.</p>
                 </div>
             </div>
         </div>
@@ -22,20 +22,25 @@
             <div class="col-lg-7">
                 <div class="login__form">
                     <h3>회원 가입</h3>
-                    <form action="#">
+                    <form >
                         <div class="input__item">
                             <input type="email" id="inputEmail" name="inputEmail" placeholder="Email address">
                             <span class="icon_mail"></span>
                         </div>
-                        <div class="input__item">
-                            <input type="text" placeholder="Your NickName">
+                        <div class="input__item" id="validationDiv" style="display: none">
+                            <input type="text" id="inputValidation" name="inputValidation" placeholder="인증번호 입력">
                             <span class="icon_profile"></span>
                         </div>
                         <div class="input__item">
-                            <input type="text" placeholder="Password">
+                            <input type="text" placeholder="Your NickName" id="inputName" name="inputName">
+                            <span class="icon_profile"></span>
+                        </div>
+                        <div class="input__item">
+                            <input type="text" placeholder="Password" id="inputPassword" name="inputPassword">
                             <span class="icon_lock"></span>
                         </div>
                         <input type="hidden" name="validNum" id="validNum">
+                        <input type="hidden" name="validFlag" id="validFlag" value="N">
                         <button type="button" class="site-btn" id="sendValidationNum">인증번호 전송</button>
                         <button type="submit" class="site-btn" id="signUpButton">SignUp Now</button>
                     </form>

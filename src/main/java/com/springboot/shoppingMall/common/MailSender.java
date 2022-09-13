@@ -22,7 +22,7 @@ public class MailSender {
         Session session = Session.getInstance(props, new Authenticator() {
             @Override
             protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication("jongbell4@gmail.com", "wckbhodqkdlganfp");
+                return new PasswordAuthentication("jongbell4@gmail.com", "input key");
             }
         });
 
@@ -34,7 +34,7 @@ public class MailSender {
         String content = (String) param.get("content");
         Message message = new MimeMessage(session);
         try {
-            message.setFrom(new InternetAddress("test@gmail.com", "관리자", "utf-8"));
+            message.setFrom(new InternetAddress("jongbell4@gmail.com", "관리자", "utf-8"));
             message.addRecipient(Message.RecipientType.TO, new InternetAddress(receiver));
             message.setSubject(title);
             message.setContent(content, "text/html; charset=utf-8");
