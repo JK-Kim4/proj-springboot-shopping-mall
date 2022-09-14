@@ -2,6 +2,7 @@ package com.springboot.shoppingMall.member;
 
 import com.springboot.shoppingMall.domain.member.entity.Member;
 import com.springboot.shoppingMall.domain.member.entity.MemberRepository;
+import com.springboot.shoppingMall.dto.MemberSaveDto;
 import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -45,6 +46,23 @@ public class MemberControllerTest {
 
         Member result = memberList.get(0);
         assertThat(result.getPassword()).isEqualTo(passwd);
+
+    }
+
+    @Test
+    public void member_이메일_조회_테스트(){
+
+        String testEmail = "testmail";
+
+        MemberSaveDto dto = new MemberSaveDto(testEmail, "1234", "test");
+
+        Member request = new Member(dto);
+
+        memberRepository.save(request);
+
+        Member findMamber = memberRepository.findByEmail(testEmail);
+
+        assertThat(findMamber.getEmail()).isEqualTo(testEmail);
 
     }
 

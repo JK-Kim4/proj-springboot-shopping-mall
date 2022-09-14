@@ -71,6 +71,10 @@ public class Member extends BaseTimeEntity {
         this.saltKey = saltKey;
         this.password = Encrypt.SHA512(password, saltKey);
         this.nickname = dto.getName();
+        this.memberRole = MemberRole.ROLE_CLIENT;
+        this.validation = true;
+        this.loginFailCount = 0;
+
     }
 
 
