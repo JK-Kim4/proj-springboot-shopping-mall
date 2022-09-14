@@ -2,14 +2,15 @@ package com.springboot.shoppingMall.domain.member.controller;
 
 import com.springboot.shoppingMall.common.CommonUtil;
 import com.springboot.shoppingMall.common.MailSender;
-import com.springboot.shoppingMall.domain.member.entity.Member;
 import com.springboot.shoppingMall.domain.member.service.MemberService;
+import com.springboot.shoppingMall.dto.MemberRequestDto;
 import com.springboot.shoppingMall.dto.MemberSaveDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 
 @Controller
@@ -52,6 +53,12 @@ public class MemberController {
     @ResponseBody
     public Long signUp(@RequestBody MemberSaveDto dto){
         return memberService.save(dto);
+    }
+
+    @PostMapping("/login")
+    @ResponseBody
+    public boolean login(@RequestBody MemberRequestDto dto, HttpServletRequest request){
+        return memberService.login(dto, request);
     }
 
 

@@ -16,7 +16,11 @@ let main = {
 
         $("#signUpButton").on('click', function (){
             _this.signUp();
-        })
+        });
+
+        $("#loginBtn").on('click', function (){
+           _this.login();
+        });
     },
     sendValidationNum : function (){
 
@@ -87,6 +91,36 @@ let main = {
                 return;
             }
         });
+    },
+    login : function (){
+        let inputPassword = $("#inputPassword").val();
+        let inputEmail = $("#inputEmail").val();
+        let data = {};
+
+
+
+        data.email = inputEmail;
+        data.password = inputPassword;
+
+        $.ajax({
+            url : "/member/login",
+            method : "post",
+            dataType : "json",
+            contentType: 'application/json; charset=utf-8',
+            data : JSON.stringify(data),
+            success : function (result) {
+                if(result == true){
+                    location.href = "/web/index";
+                }else{
+                    location.reload();
+                }
+            },
+            error : function (x, h, r){
+
+            }
+        });
+
+
     }
 }
 

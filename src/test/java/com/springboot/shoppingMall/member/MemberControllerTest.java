@@ -21,29 +21,27 @@ public class MemberControllerTest {
     @Autowired
     MemberRepository memberRepository;
 
-//    @Autowired
-//    MemberAuthenticationRepository memberAuthenticationRepository;
 
     @After
     public void cleanUp(){
         memberRepository.deleteAll();
-//        memberAuthenticationRepository.deleteAll();
     }
 
     @Test
     public void member_등록테스트(){
 
+        //given
         String id = "test";
         String passwd = "test";
-
         Member mem = Member.builder()
                 .password(passwd)
                 .build();
-
         memberRepository.save(mem);
 
+        //when
         List<Member> memberList = memberRepository.findAll();
 
+        //then
         Member result = memberList.get(0);
         assertThat(result.getPassword()).isEqualTo(passwd);
 
@@ -52,16 +50,20 @@ public class MemberControllerTest {
     @Test
     public void member_이메일_조회_테스트(){
 
+        //given
         String testEmail = "testmail";
-
-        MemberSaveDto dto = new MemberSaveDto(testEmail, "1234", "test");
-
+        MemberSaveDto dto = MemberSaveDto.builder()
+                .email(testEmail)
+                .password("1234")
+                .name("tester")
+                .build();
         Member request = new Member(dto);
-
         memberRepository.save(request);
 
+        //when
         Member findMamber = memberRepository.findByEmail(testEmail);
 
+        //then
         assertThat(findMamber.getEmail()).isEqualTo(testEmail);
 
     }
