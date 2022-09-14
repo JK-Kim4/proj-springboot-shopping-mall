@@ -4,6 +4,7 @@ import com.springboot.shoppingMall.common.CommonUtil;
 import com.springboot.shoppingMall.common.MailSender;
 import com.springboot.shoppingMall.domain.member.entity.Member;
 import com.springboot.shoppingMall.domain.member.service.MemberService;
+import com.springboot.shoppingMall.dto.MemberSaveDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -49,8 +50,8 @@ public class MemberController {
 
     @PostMapping("/signUp")
     @ResponseBody
-    public Long signUp(@RequestBody Member member){
-        return memberService.save(member);
+    public Long signUp(@RequestBody MemberSaveDto dto){
+        return memberService.save(dto);
     }
 
 

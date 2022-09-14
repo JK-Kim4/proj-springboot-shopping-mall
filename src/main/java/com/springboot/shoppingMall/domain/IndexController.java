@@ -1,4 +1,4 @@
-package com.springboot.shoppingMall;
+package com.springboot.shoppingMall.domain;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class IndexController {
 
-    @GetMapping("/web/index")
+    @GetMapping(value = {"/web/index", "/", "/index"})
     public String webIndex(){
 
         return "/web/index";

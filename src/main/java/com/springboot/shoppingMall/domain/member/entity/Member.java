@@ -1,6 +1,8 @@
 package com.springboot.shoppingMall.domain.member.entity;
 
+import com.springboot.shoppingMall.common.Encrypt;
 import com.springboot.shoppingMall.domain.BaseTimeEntity;
+import com.springboot.shoppingMall.dto.MemberSaveDto;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -28,6 +30,9 @@ public class Member extends BaseTimeEntity {
     @Column
     private String password;
 
+    @Column
+    private String saltKey;
+
     //enum
     @Enumerated(EnumType.STRING)
     @Column
@@ -48,12 +53,24 @@ public class Member extends BaseTimeEntity {
     @Builder
     public Member(String password, String email,
                   MemberRole memberRole, String nickname, boolean validation, int loginFailCount){
-        this.password = password;
+        String saltKey = Encrypt.getSalt();
+
         this.email = email;
+        this.saltKey = saltKey;
+        this.password = Encrypt.SHA512(password, saltKey);
         this.memberRole = memberRole;
         this.nickname = nickname;
         this.validation = validation;
         this.loginFailCount = loginFailCount;
+    }
+
+    @Builder
+    public Member(MemberSaveDto dto){
+        String saltKey = Encrypt.getSalt();
+        this.email = dto.getEmail();
+        this.saltKey = saltKey;
+        this.password = Encrypt.SHA512(password, saltKey);
+        this.nickname = dto.getName();
     }
 
 
