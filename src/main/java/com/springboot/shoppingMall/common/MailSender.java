@@ -22,7 +22,7 @@ public class MailSender {
         Session session = Session.getInstance(props, new Authenticator() {
             @Override
             protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication("jongbell4@gmail.com", "input key");
+                return new PasswordAuthentication("jongbell4@gmail.com", "wckbhodqkdlganfp");
             }
         });
 

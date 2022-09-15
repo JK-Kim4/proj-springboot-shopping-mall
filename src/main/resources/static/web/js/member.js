@@ -97,8 +97,6 @@ let main = {
         let inputEmail = $("#inputEmail").val();
         let data = {};
 
-
-
         data.email = inputEmail;
         data.password = inputPassword;
 

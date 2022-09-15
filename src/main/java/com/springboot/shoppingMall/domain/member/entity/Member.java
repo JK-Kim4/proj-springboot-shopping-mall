@@ -54,7 +54,6 @@ public class Member extends BaseTimeEntity {
     public Member(String password, String email,
                   MemberRole memberRole, String nickname, boolean validation, int loginFailCount){
         String saltKey = Encrypt.getSalt();
-
         this.email = email;
         this.saltKey = saltKey;
         this.password = Encrypt.SHA512(password, saltKey);
@@ -67,9 +66,10 @@ public class Member extends BaseTimeEntity {
     @Builder
     public Member(MemberSaveDto dto){
         String saltKey = Encrypt.getSalt();
+//        String saltKey = "LkYznIVZpsXKlAQWlorWhg==";
         this.email = dto.getEmail();
         this.saltKey = saltKey;
-        this.password = Encrypt.SHA512(password, saltKey);
+        this.password = Encrypt.SHA512(dto.getPassword(), saltKey);
         this.nickname = dto.getName();
         this.memberRole = MemberRole.ROLE_CLIENT;
         this.validation = true;

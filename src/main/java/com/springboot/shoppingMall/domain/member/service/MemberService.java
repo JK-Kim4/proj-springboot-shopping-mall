@@ -36,17 +36,28 @@ public class MemberService {
         Member member = memberRepository.findByEmail(dto.getEmail());
         String saltKey = member.getSaltKey();
 
+        log.info("user password = {}", member.getPassword());
+        log.info("input password pure = {}", dto.getPassword(), saltKey);
+        log.info("input password enc1 = {}", Encrypt.SHA512(dto.getPassword(), saltKey));
+        log.info("input password enc2 = {}", Encrypt.SHA512(dto.getPassword(), saltKey));
+        log.info("input password enc3 = {}", Encrypt.SHA512(dto.getPassword(), saltKey));
+        log.info("isEqual = {}", member.getPassword().equals(Encrypt.SHA512(dto.getPassword(), saltKey)));
+
+
         if(member == null){
+            log.info("login result = null");
             throw new IllegalArgumentException("아이디를 확인해 주세요.");
         }
         //login success
         else if(member.getPassword().equals(Encrypt.SHA512(dto.getPassword(), saltKey))){
+            log.info("login result = success");
             session.setAttribute("userName", member.getNickname());
             session.setAttribute("userSeq", member.getMemberSeq());
             return true;
         }
         //login fail
         else {
+            log.info("login result = fail");
             throw new IllegalArgumentException("비밀번호가 일치하지 않습니다.");
         }
     }

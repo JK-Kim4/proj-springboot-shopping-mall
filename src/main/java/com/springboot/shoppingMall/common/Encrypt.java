@@ -25,14 +25,12 @@ public class Encrypt {
     }
 
     public static String SHA512(String password,  String hash){
-        String salt = hash + password;
         String hex = null;
-
         try {
-            MessageDigest msg = MessageDigest.getInstance("SHA-512");
-            msg.update(salt.getBytes());
-
-            hex = String.format("%128x", new BigInteger(1, msg.digest()));
+            MessageDigest md = MessageDigest.getInstance("SHA-512");
+            md.update(hash.getBytes());
+            md.update(password.getBytes());
+            hex = String.format("%128x", new BigInteger(1, md.digest()));
         }catch (Exception e){
             log.error("SHA512 error", e);
         }

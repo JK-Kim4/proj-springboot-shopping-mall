@@ -1,7 +1,9 @@
 package com.springboot.shoppingMall.member;
 
+import com.springboot.shoppingMall.common.Encrypt;
 import com.springboot.shoppingMall.domain.member.entity.Member;
 import com.springboot.shoppingMall.domain.member.entity.MemberRepository;
+import com.springboot.shoppingMall.dto.MemberRequestDto;
 import com.springboot.shoppingMall.dto.MemberSaveDto;
 import org.junit.After;
 import org.junit.Test;
@@ -65,6 +67,46 @@ public class MemberControllerTest {
 
         //then
         assertThat(findMamber.getEmail()).isEqualTo(testEmail);
+
+    }
+
+    @Test
+    public void 회원로그인_테스트(){
+
+        String email = "test@naver.com";
+        String password = "1234";
+
+//        String encKey = "LkYznIVZpsXKlAQWlorWhg==";
+
+                //given
+                MemberSaveDto dto = MemberSaveDto.builder()
+                .email(email)
+                .password(password)
+                .name("test")
+                .build();
+
+        Member m = new Member(dto);
+
+        long result = memberRepository.save(m).getMemberSeq();
+
+        Member testMem = memberRepository.findByEmail(email);
+
+        System.out.println("insert member data All = " +testMem.toString());
+        System.out.println("insert member data salt key = " +testMem.getSaltKey());
+
+        //when
+
+        MemberRequestDto dto2 = MemberRequestDto.builder()
+                .email(email)
+                .password(password)
+                .build();
+
+        //then
+        System.out.println("login member enc password = " +Encrypt.SHA512(password, testMem.getSaltKey()));
+        System.out.println("insert member enc password = " +testMem.getPassword());
+
+
+        assertThat(testMem.getPassword()).isEqualTo(Encrypt.SHA512(password, testMem.getSaltKey()));
 
     }
 
