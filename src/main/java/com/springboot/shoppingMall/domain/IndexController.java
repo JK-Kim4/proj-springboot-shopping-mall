@@ -13,12 +13,13 @@ public class IndexController {
     @GetMapping(value = {"/web/index", "/", "/index"})
     public String webIndex(){
 
-        return "/web/index";
+//        return "/web/index";
+        return "/admin/index";
     }
 
-    @GetMapping("/web/login")
+    @GetMapping("/login")
     public String webLogin(){
-        return "/web/contents/member/login";
+        return "/admin/contents/member/login";
     }
 
     @GetMapping("/web/signup")
