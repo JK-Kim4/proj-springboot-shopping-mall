@@ -22,9 +22,9 @@ public class IndexController {
         return "/admin/contents/member/login";
     }
 
-    @GetMapping("/web/signup")
+    @GetMapping("/signup")
     public String webSignup(){
-        return "/web/contents/member/registration";
+        return "/admin/contents/member/signup";
     }
 
 }
