@@ -55,5 +55,40 @@ public class ProductControllerTest {
 
     }
 
+    @Test
+    public void product_update_test(){
+        //given
+        ProductSaveDto dto = ProductSaveDto.builder()
+                .name("test product")
+                .company("test company")
+                .price(3000)
+                .build();
+
+        //convert
+        Product request = new Product(dto);
+        repository.save(request);
+
+        //when
+        List<Product> productList =  repository.findAll();
+        Product insertP = productList.get(0);
+
+        ProductSaveDto udtDto = ProductSaveDto.builder()
+                .name("update product")
+                .company("update company")
+                .price(8000)
+                .content("update content")
+                .build();
+
+        insertP.update(udtDto);
+
+        //then
+        assertThat(insertP.getCompany()).isEqualTo(udtDto.getCompany());
+        assertThat(insertP.getPrice()).isEqualTo(udtDto.getPrice());
+        assertThat(insertP.getName()).isEqualTo(udtDto.getName());
+
+        assertThat(request.getSeq()).isEqualTo(insertP.getSeq());
+
+    }
+
 
 }

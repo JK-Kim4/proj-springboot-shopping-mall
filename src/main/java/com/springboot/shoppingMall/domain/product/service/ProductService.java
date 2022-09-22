@@ -29,4 +29,18 @@ public class ProductService {
             return null;
         }
     }
+
+    public Long update(Long seq, ProductSaveDto dto){
+        try{
+            Product prod = productRepository.findAllById(seq);
+            if(prod == null){
+                throw new NullPointerException("상품이 존재하지 않습니다.");
+            }
+            prod.update(dto);
+            return prod.getSeq();
+        }catch (Exception e){
+            log.error("product update error occur", e);
+            return null;
+        }
+    }
 }

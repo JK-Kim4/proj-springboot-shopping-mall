@@ -46,4 +46,11 @@ public class Product extends BaseTimeEntity {
         this.content = dto.getContent();
         this.stock = 0;
     }
+
+    public void update(ProductSaveDto dto){
+        this.name = dto.getName();
+        this.company = dto.getCompany();
+        this.price = dto.getPrice();
+        this.content = dto.getContent();
+    }
 }
