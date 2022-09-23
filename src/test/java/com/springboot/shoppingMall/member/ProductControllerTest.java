@@ -79,14 +79,20 @@ public class ProductControllerTest {
                 .content("update content")
                 .build();
 
-        insertP.update(udtDto);
+        Product updateP = new Product(udtDto);
+
+        int result = repository.updateProduct(updateP, insertP.getSeq());
+        System.out.println("result = " + result);
+
+        List<Product> productList2 =  repository.findAll();
+        Product resultP = productList2.get(0);
 
         //then
-        assertThat(insertP.getCompany()).isEqualTo(udtDto.getCompany());
-        assertThat(insertP.getPrice()).isEqualTo(udtDto.getPrice());
-        assertThat(insertP.getName()).isEqualTo(udtDto.getName());
+        assertThat(resultP.getCompany()).isEqualTo(udtDto.getCompany());
+        assertThat(resultP.getPrice()).isEqualTo(udtDto.getPrice());
+        assertThat(resultP.getName()).isEqualTo(udtDto.getName());
 
-        assertThat(request.getSeq()).isEqualTo(insertP.getSeq());
+        assertThat(request.getSeq()).isEqualTo(resultP.getSeq());
 
     }
 

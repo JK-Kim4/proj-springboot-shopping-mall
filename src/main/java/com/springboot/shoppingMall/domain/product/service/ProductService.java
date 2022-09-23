@@ -6,12 +6,14 @@ import com.springboot.shoppingMall.dto.ProductSaveDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-@Service
-@RequiredArgsConstructor
 @Slf4j
+@Service
+@Transactional
+@RequiredArgsConstructor
 public class ProductService {
 
     private final ProductRepository productRepository;
@@ -30,17 +32,20 @@ public class ProductService {
         }
     }
 
-    public Long update(Long seq, ProductSaveDto dto){
+
+    public int update(Long seq, ProductSaveDto dto){
+        int result = 0;
         try{
-            Product prod = productRepository.findAllById(seq);
+            Product prod = productRepository.getOne(seq);
             if(prod == null){
                 throw new NullPointerException("상품이 존재하지 않습니다.");
+            }else{
+                result = productRepository.updateProduct(prod, prod.getSeq());
             }
-            prod.update(dto);
-            return prod.getSeq();
+            return result;
         }catch (Exception e){
             log.error("product update error occur", e);
-            return null;
+            return result;
         }
     }
 }

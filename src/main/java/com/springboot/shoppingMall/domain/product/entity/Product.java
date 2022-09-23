@@ -5,12 +5,14 @@ import com.springboot.shoppingMall.dto.ProductSaveDto;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
 
 @Getter
+@Setter
 @NoArgsConstructor
 @Entity
 @DynamicInsert
@@ -45,12 +47,5 @@ public class Product extends BaseTimeEntity {
         this.price = dto.getPrice();
         this.content = dto.getContent();
         this.stock = 0;
-    }
-
-    public void update(ProductSaveDto dto){
-        this.name = dto.getName();
-        this.company = dto.getCompany();
-        this.price = dto.getPrice();
-        this.content = dto.getContent();
     }
 }
